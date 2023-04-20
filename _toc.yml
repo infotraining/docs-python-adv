@@ -1,0 +1,15 @@
+format: jb-article
+root: intro
+sections:
+  - file: classes
+  - file: builtins
+    sections:
+      - file: builtin-types-big-o
+      - file: builtin-types
+  - file: functions
+  - file: iterators
+  - file: decorators
+  - file: context-managers
+  - file: metaclasses
+  - file: packages
+  - file: unit-tests
