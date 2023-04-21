@@ -1,0 +1,739 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Metaklasy &#8212; Zaawansowane programowanie w języku Python</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Moduły i pakiety" href="packages.html" />
+    <link rel="prev" title="Menadżery kontekstu" href="context-managers.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Zaawansowane programowanie w języku Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Zaawansowane programowanie w języku Python
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="classes.html">
+   Klasy i obiekty - elementy zaawansowane
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="builtins.html">
+   Optymalne wykorzystanie wbudowanych typów Pythona
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="builtin-types-big-o.html">
+     Wydajność operacji na typach wbudowanych
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="builtin-types.html">
+     Moduł collections
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="functions.html">
+   Funkcje - elementy zaawansowane
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="iterators.html">
+   Elementy programowania funkcyjnego
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="decorators.html">
+   Dekoratory funkcji i klas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="context-managers.html">
+   Menadżery kontekstu
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Metaklasy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="packages.html">
+   Moduły i pakiety
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="unit-tests.html">
+   Testy jednostkowe
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/metaclasses.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/infotraining/docs-python-adv"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/infotraining/docs-python-adv/issues/new?title=Issue%20on%20page%20%2Fmetaclasses.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/infotraining/docs-python-adv/master?urlpath=tree/metaclasses.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#klasy-jako-obiekty">
+   Klasy jako obiekty
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dynamiczne-tworzenie-klas">
+   Dynamiczne tworzenie klas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dziedziczenie-i-metaklasy">
+   Dziedziczenie i metaklasy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#metody-klasy">
+   Metody klasy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Metaklasy
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funkcja-jako-metaklasa">
+     Funkcja jako metaklasa
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#przyklad-metaklasy">
+   Przykład metaklasy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#metoda-specjalna-new">
+   Metoda specjalna
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     __new__
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#szablon-metaklasy">
+   Szablon metaklasy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#call-metaklasy">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     __call__
+    </span>
+   </code>
+   metaklasy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#zastosowanie-metaklas">
+   Zastosowanie metaklas
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="metaklasy">
+<h1>Metaklasy<a class="headerlink" href="#metaklasy" title="Permalink to this headline">¶</a></h1>
+<p>Metaklasą nazywamy obiekt (najczęściej klasę) generujący inne klasy.</p>
+<p><em>“Metaclasses are deeper magic than 99% of users should ever worry about.
+If you wonder whether you need them, you don’t”</em></p>
+<p><em>– Python Guru Tim Peters</em></p>
+<div class="section" id="klasy-jako-obiekty">
+<h2>Klasy jako obiekty<a class="headerlink" href="#klasy-jako-obiekty" title="Permalink to this headline">¶</a></h2>
+<p>Podobnie jak w przypadku funkcji, klasy są obiektami.
+Służą do tworzenia nowych obiektów (instancji).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyClass</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nowy obiekt jest tworzony przy pomocy operatora <code class="docutils literal notranslate"><span class="pre">()</span></code>. Jego typ to nazwa klasy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mc</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">mc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>__main__.MyClass
+</pre></div>
+</div>
+</div>
+</div>
+<p>Jakiego typu jest obiekt klasy?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">MyClass</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="dynamiczne-tworzenie-klas">
+<h2>Dynamiczne tworzenie klas<a class="headerlink" href="#dynamiczne-tworzenie-klas" title="Permalink to this headline">¶</a></h2>
+<p>Skoro są obiektami typu <em>type</em>, to możemy je dynamicznie tworzyć:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">choose_class</span><span class="p">(</span><span class="n">system</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">system</span> <span class="o">==</span> <span class="s2">&quot;windows&quot;</span><span class="p">:</span>
+        <span class="k">class</span> <span class="nc">WindowsSpecificClass</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">return</span> <span class="n">WindowsSpecificClass</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">class</span> <span class="nc">DefaultClass</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">return</span> <span class="n">DefaultClass</span>
+    
+<span class="n">os_class</span> <span class="o">=</span> <span class="n">choose_class</span><span class="p">(</span><span class="s2">&quot;windows&quot;</span><span class="p">)</span>
+
+<span class="n">os_class</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>__main__.choose_class.&lt;locals&gt;.WindowsSpecificClass
+</pre></div>
+</div>
+</div>
+</div>
+<p>Skoro klasa jest typu <em>type</em>, to może można użyć go tak jak klasy?</p>
+<p><code class="docutils literal notranslate"><span class="pre">type</span></code> przyjmuje trzy argumenty:</p>
+<ul class="simple">
+<li><p>nazwa klasy</p></li>
+<li><p>krotka z rodzicami klasy</p></li>
+<li><p>słownik zawierający nazwy atrybutów i ich wartości</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;foo&#39;</span><span class="p">:</span> <span class="s2">&quot;foo_value&quot;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">:</span> <span class="mi">123</span><span class="p">}</span>
+
+<span class="n">DynamicClass</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="s2">&quot;DynamicClass&quot;</span><span class="p">,</span> <span class="p">(),</span> <span class="n">attrs</span><span class="p">)</span>
+
+<span class="n">dc</span> <span class="o">=</span> <span class="n">DynamicClass</span><span class="p">()</span>
+<span class="n">dc</span><span class="o">.</span><span class="n">bar</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>123
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="dziedziczenie-i-metaklasy">
+<h2>Dziedziczenie i metaklasy<a class="headerlink" href="#dziedziczenie-i-metaklasy" title="Permalink to this headline">¶</a></h2>
+<p>Używając instrukcji <code class="docutils literal notranslate"><span class="pre">class</span></code> można zdefiniować klasę dziedziczącą po innej klasie w następujący sposób:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyClassChild</span><span class="p">(</span><span class="n">DynamicClass</span><span class="p">):</span>
+    <span class="n">bar</span> <span class="o">=</span> <span class="mi">665</span>
+
+<span class="n">child_mc</span> <span class="o">=</span> <span class="n">MyClassChild</span><span class="p">()</span>
+<span class="n">child_mc</span><span class="o">.</span><span class="n">bar</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>665
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">child_mc</span><span class="o">.</span><span class="n">foo</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;foo_value&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Jeżeli chcemy stworzyć klasę dynamicznie (z użyciem <em>type</em>), to jako drugi argument możemy przekazać krotkę rodziców:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DynamicClassChild</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="s2">&quot;DynamicClassChild&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">DynamicClass</span><span class="p">,),</span> <span class="p">{</span><span class="s1">&#39;bar&#39;</span><span class="p">:</span> <span class="mi">65</span><span class="p">})</span>
+<span class="n">child_dc</span> <span class="o">=</span> <span class="n">DynamicClassChild</span><span class="p">()</span>
+<span class="n">child_dc</span><span class="o">.</span><span class="n">bar</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>65
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">child_dc</span><span class="o">.</span><span class="n">foo</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;foo_value&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="metody-klasy">
+<h2>Metody klasy<a class="headerlink" href="#metody-klasy" title="Permalink to this headline">¶</a></h2>
+<p>Metody też mogą stanowić część słownika przekazywaną do <code class="docutils literal notranslate"><span class="pre">type</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">echo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Echo: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">foo</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">AnotherDynamicClass</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="s2">&quot;AnotherDynamicClass&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">DynamicClass</span><span class="p">,),</span> <span class="p">{</span><span class="s1">&#39;bar&#39;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span> <span class="s1">&#39;echo&#39;</span> <span class="p">:</span> <span class="n">echo</span><span class="p">})</span>
+
+<span class="n">acd</span> <span class="o">=</span> <span class="n">AnotherDynamicClass</span><span class="p">()</span>
+<span class="n">acd</span><span class="o">.</span><span class="n">echo</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Echo: foo_value
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>Metaklasy<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p><em>type</em> jest więc wbudowaną w Pythona metaklasą.</p>
+<p>Jednakże istnieje możliwość stworzenia własnych metaklas.</p>
+<p>Pod Pythonem 3, składnia jest następująca:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">class_creator</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>gdzie <code class="docutils literal notranslate"><span class="pre">class_creator</span></code> to specjalny obiekt, którego należy użyć zamiast <code class="docutils literal notranslate"><span class="pre">type</span></code> do utworzenia obiektu klasy.</p>
+<div class="section" id="funkcja-jako-metaklasa">
+<h3>Funkcja jako metaklasa<a class="headerlink" href="#funkcja-jako-metaklasa" title="Permalink to this headline">¶</a></h3>
+<p>W szczególności, metaklasą może być funkcja.
+Poniżej przedstawiono metaklasę, która konwertuje nazwy wszystkich atrybutów tak, aby używały wielkich liter.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">upper_attr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">parents</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+    <span class="n">_attrs</span> <span class="o">=</span> <span class="p">((</span><span class="n">name</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="n">value</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+    <span class="n">attrs_upper</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">_attrs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">parents</span><span class="p">,</span> <span class="n">attrs_upper</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Foo</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">upper_attr</span><span class="p">):</span>
+    <span class="n">bar</span> <span class="o">=</span> <span class="s1">&#39;foo&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span> <span class="o">=</span> <span class="n">Foo</span><span class="p">()</span>
+<span class="n">foo</span><span class="o">.</span><span class="n">BAR</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;foo&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="przyklad-metaklasy">
+<h2>Przykład metaklasy<a class="headerlink" href="#przyklad-metaklasy" title="Permalink to this headline">¶</a></h2>
+<p>Zazwyczaj jednak metaklasa jest klasą.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UpperAttr</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">parents</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="n">_attrs</span> <span class="o">=</span> <span class="p">((</span><span class="n">name</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="n">value</span><span class="p">)</span>
+                  <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+        <span class="n">attrs_upper</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">_attrs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">parents</span><span class="p">,</span> <span class="n">attrs_upper</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Boo</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">UpperAttr</span><span class="p">):</span>
+    <span class="n">bar</span> <span class="o">=</span> <span class="s1">&#39;boo&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span> <span class="o">=</span> <span class="n">Foo</span><span class="p">()</span>
+<span class="n">foo</span><span class="o">.</span><span class="n">BAR</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;foo&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="metoda-specjalna-new">
+<h2>Metoda specjalna <code class="docutils literal notranslate"><span class="pre">__new__</span></code><a class="headerlink" href="#metoda-specjalna-new" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">__new__(cls,</span> <span class="pre">...)</span></code> jest metodą wywoływaną, aby utworzyć nową instancję obiektu.
+Przekazywany jest do niej <em>obiekt klasy</em> oraz argumenty konstruktora.</p>
+<p>Dla porównania, <code class="docutils literal notranslate"><span class="pre">__init__(self,</span> <span class="pre">...)</span></code> jest konstruktorem i jest wykonywany, gdy inicjalizowany jest obiekt (instancja).
+Przekazywany jest do niego <em>obiekt instancji</em>.</p>
+</div>
+<div class="section" id="szablon-metaklasy">
+<h2>Szablon metaklasy<a class="headerlink" href="#szablon-metaklasy" title="Permalink to this headline">¶</a></h2>
+<p>Ponieważ metaklasy są tak naprawdę zwykłymi klasami, to mogą podlegać dziedziczeniu.
+Aby zapewnić bezproblemowe dziedziczenie, musimy użyć <code class="docutils literal notranslate"><span class="pre">super()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UpperAttrChild</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">parents</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="n">_attrs</span> <span class="o">=</span> <span class="p">((</span><span class="n">name</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+        <span class="n">attrs_upper</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">_attrs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">UpperAttrChild</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">parents</span><span class="p">,</span> <span class="n">attrs_upper</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="call-metaklasy">
+<h2><code class="docutils literal notranslate"><span class="pre">__call__</span></code> metaklasy<a class="headerlink" href="#call-metaklasy" title="Permalink to this headline">¶</a></h2>
+<p>Ciekawym aspektem jest użycie metody <code class="docutils literal notranslate"><span class="pre">__call__</span></code>.
+Jest ona wywoływana dla gotowego obiektu klasy wtedy, gdy używamy “wywołania” (operatora <code class="docutils literal notranslate"><span class="pre">()</span></code>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Meta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;__call__ of &#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">cls</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;__call__ *args=&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">type</span><span class="o">.</span><span class="fm">__call__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Gadget</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">Meta</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">price</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">price</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Initializing Gadget(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">price</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">Gadget</span><span class="p">(</span><span class="s2">&quot;ipad&quot;</span><span class="p">,</span> <span class="mf">1500.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>__call__ of  &lt;class &#39;__main__.Gadget&#39;&gt;
+__call__ *args= (&#39;ipad&#39;, 1500.0)
+Initializing Gadget(ipad, 1500.0)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="zastosowanie-metaklas">
+<h2>Zastosowanie metaklas<a class="headerlink" href="#zastosowanie-metaklas" title="Permalink to this headline">¶</a></h2>
+<p>Metaklasy są nazywane “rozwiązaniem szukającym problemu”.</p>
+<p>W zdecydowanej większości sytuacji ich użycie nie jest konieczne.</p>
+<p>W praktyce, metaklasy są stosowane tam, gdzie API klasy musi być tworzone dynamicznie (np. ORM w Django) oraz do implementacji niektórych wzorców projektowych (np. singleton).</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="context-managers.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Menadżery kontekstu</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="packages.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Moduły i pakiety</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Krystian Piękoś<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

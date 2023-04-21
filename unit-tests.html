@@ -1,0 +1,641 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Testy jednostkowe &#8212; Zaawansowane programowanie w języku Python</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Moduły i pakiety" href="packages.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Zaawansowane programowanie w języku Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Zaawansowane programowanie w języku Python
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="classes.html">
+   Klasy i obiekty - elementy zaawansowane
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="builtins.html">
+   Optymalne wykorzystanie wbudowanych typów Pythona
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="builtin-types-big-o.html">
+     Wydajność operacji na typach wbudowanych
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="builtin-types.html">
+     Moduł collections
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="functions.html">
+   Funkcje - elementy zaawansowane
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="iterators.html">
+   Elementy programowania funkcyjnego
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="decorators.html">
+   Dekoratory funkcji i klas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="context-managers.html">
+   Menadżery kontekstu
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="metaclasses.html">
+   Metaklasy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="packages.html">
+   Moduły i pakiety
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Testy jednostkowe
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/unit-tests.rst"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.rst</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/infotraining/docs-python-adv"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/infotraining/docs-python-adv/issues/new?title=Issue%20on%20page%20%2Funit-tests.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unittest">
+   Unittest
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wprowadzenie">
+     Wprowadzenie
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#przyklad">
+     Przykład
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#uruchamianie-testow">
+     Uruchamianie testów
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup-i-teardown">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       setUp
+      </span>
+     </code>
+     i
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       tearDown
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#self-assert">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       self.assert*
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#doctest">
+   Doctest
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pytest">
+   Pytest
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Wprowadzenie
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Przykład
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Uruchamianie testów
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="testy-jednostkowe">
+<h1>Testy jednostkowe<a class="headerlink" href="#testy-jednostkowe" title="Permalink to this headline">¶</a></h1>
+<p>Testowanie programu pozwala sprawdzić, czy program zachowuje się w pożądany sposób.
+Manualne testowanie programu jest czasochłonne.
+Dlatego dobrą praktyką jest pisanie automatycznych testów, które mogą zostać szybko wykonane przez komputer.
+Testuje się nie tylko całe programy, ale też pojedyncze funkcje czy klasy.</p>
+<p>Standardowa biblioteka Pythona posiada moduły <code class="docutils literal notranslate"><span class="pre">unittest</span></code> i <code class="docutils literal notranslate"><span class="pre">doctest</span></code> ułatwiające pisanie takich testów.
+Ponadto, omówiona zostanie biblioteka <code class="docutils literal notranslate"><span class="pre">pytest</span></code>, która jest popularna pomimo tego, że nie jest częścią standardowej biblioteki.</p>
+<div class="section" id="unittest">
+<h2>Unittest<a class="headerlink" href="#unittest" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="wprowadzenie">
+<h3>Wprowadzenie<a class="headerlink" href="#wprowadzenie" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">unittest</span></code> jest najpopularniejszą biblioteką stosowaną do pisania testów jednostkowych. Wynika to jej następujących cech:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">unittest</span></code> jest częścią standardowej biblioteki Pythona, co oznacza, że jest dostępna wszędzie, gdzie jest zainstalowany Python.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unittest</span></code> jest inspirowana biblioteką <code class="docutils literal notranslate"><span class="pre">JUnit</span></code> z Javy.
+Osoby, które pisały wcześniej testy w <code class="docutils literal notranslate"><span class="pre">JUnit</span></code> bardzo szybko nauczą się pisać testy w Pythonie.
+Ponadto, wykorzystano sprawdzony interfejs.
+Z drugiej strony, wzorowanie się na bibliotece Javy powoduje, że testy są dosyć rozwlekłe i “rozgadane”.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unittest</span></code> potrafi automatycznie znaleźć wszystkie testy i wykonać je.</p></li>
+</ul>
+</div>
+<div class="section" id="przyklad">
+<h3>Przykład<a class="headerlink" href="#przyklad" title="Permalink to this headline">¶</a></h3>
+<p>Testy grupuje się w klasy dziedziczące po <code class="docutils literal notranslate"><span class="pre">unittest.TestCase</span></code>.
+Każda metoda zaczynająca się od <code class="docutils literal notranslate"><span class="pre">test_</span></code> to jeden test.
+Wywołanie <code class="docutils literal notranslate"><span class="pre">unittest.main()</span></code> powoduje uruchomienie wszystkich testów (nie jest potrzebne ręczne wymienianie nazw wszystkich testów).</p>
+<p>Powszechnie przyjętą konwencją jest separacja testów i testowanego kodu, poprzez umieszczenie ich w osobnych plikach.
+Dodatkowo, testy umieszcza się w osobnym katalogu, a nie w tym samym katalogu co testowany moduł.
+Dzięki temu możliwa jest instalacja pakietu bez instalowania bibliotek wykorzystywanych tylko przez testy.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># converters.py</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="k">def</span> <span class="nf">url_converter</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">url</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Empty url&quot;</span><span class="p">)</span>
+
+    <span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;(http://[\w-]+(\.[\w-]+)*((/[\w-]*)?))&#39;</span>
+    <span class="n">regexp</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">regexp</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;&lt;a href=&quot;</span><span class="se">\\</span><span class="s1">1&quot;&gt;</span><span class="se">\\</span><span class="s1">1&lt;/a&gt;&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+
+<span class="c1"># test_converters.py</span>
+<span class="kn">import</span> <span class="nn">unittest</span>
+
+<span class="kn">from</span> <span class="nn">converters</span> <span class="kn">import</span> <span class="n">url_converter</span>
+
+<span class="k">class</span> <span class="nc">UrlConverterTests</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">test_converts_url_to_ahref</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://www.python.org&quot;</span>
+        <span class="n">expected_ahref</span> <span class="o">=</span> <span class="s1">&#39;&lt;a href=&quot;http://www.python.org&quot;&gt;http://www.python.org&lt;/a&gt;&#39;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">url_converter</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">expected_ahref</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Ostatnie dwie linie powyższego kodu gwarantują uruchomienie testów, ale tylko gdy plik z kodem zostanie bezpośrednio uruchomiony, a nie zaimportowany.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python test_converters.py
+</pre></div>
+</div>
+</div>
+<div class="section" id="uruchamianie-testow">
+<h3>Uruchamianie testów<a class="headerlink" href="#uruchamianie-testow" title="Permalink to this headline">¶</a></h3>
+<p>Możemy wykonać testy wpisując w konsoli.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python -m unittest test_my_module.TestAdd
+</pre></div>
+</div>
+<p>Ogromną zaletą biblioteki <code class="docutils literal notranslate"><span class="pre">unittest</span></code> jest możliwość uruchomienia wszystkich testów bez określania, gdzie się one znajdują.
+W takiej sytuacji biblioteka <code class="docutils literal notranslate"><span class="pre">unittest</span></code> poszukuje testów we wszystkich plikach znajdujących się w aktualnym katalogu, podkatalogach, podkatalogach podkatalogów itd.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python -m unittest
+</pre></div>
+</div>
+<p>Przydatnym przełącznikiem jest <code class="docutils literal notranslate"><span class="pre">--failfast</span></code>  (lub <code class="docutils literal notranslate"><span class="pre">-f</span></code>), który zatrzymuje wykonywanie testów po pierwszym teście, który nie przeszedł.
+Ułatwia to skupienie się na naprawieniu testu, ponieważ na wyjściu pojawiają się informacje dotyczące tylko jednego nieprzechodzącego testu.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python -m unittest --failfast
+</pre></div>
+</div>
+<p>Niektóre środowiska programistyczne, takie jak PyCharm, posiadają wsparcie dla uruchamiania testów.</p>
+</div>
+<div class="section" id="setup-i-teardown">
+<h3><code class="docutils literal notranslate"><span class="pre">setUp</span></code> i <code class="docutils literal notranslate"><span class="pre">tearDown</span></code><a class="headerlink" href="#setup-i-teardown" title="Permalink to this headline">¶</a></h3>
+<p>Jeżeli na początku lub na końcu każdego testu wykonujemy operacje, które powtarzają się w innych testach, wtedy można umieścić je w metodach <code class="docutils literal notranslate"><span class="pre">setUp</span></code> i <code class="docutils literal notranslate"><span class="pre">tearDown</span></code>.
+<code class="docutils literal notranslate"><span class="pre">setUp</span></code> jest metodą wykonywaną na początku każdego testu, natomiast <code class="docutils literal notranslate"><span class="pre">tearDown</span></code> – po wykonaniu testu, niezależnie od tego, czy test przeszedł, czy nie.</p>
+<p>Jest to świetne miejsce na:</p>
+<ul class="simple">
+<li><p>uzyskanie zasobów, które są potrzebne w każdym teście (np. połączenie z bazą danych),</p></li>
+<li><p>skonfigurowanie środowiska w ten sam sposób dla każdego testu (np. w <code class="docutils literal notranslate"><span class="pre">setUp</span></code> – utworzenie przykładowych tabel i rekordów w bazie danych, a w <code class="docutils literal notranslate"><span class="pre">tearDown</span></code> – “posprzątanie” po teście, tzn. wyczyszczenie testowej bazy danych).</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TestAdd</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;setUp&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tearDown&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_one</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test one&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_two</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test two&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">setUp</span>
+<span class="go">test one</span>
+<span class="go">tearDown</span>
+<span class="go">setUp</span>
+<span class="go">test two</span>
+<span class="go">tearDown</span>
+</pre></div>
+</div>
+<p>Warto zauważyć, że, generalnie rzecz biorąc, w Pythonie nazwy metod piszemy małymi literami, a poszczególne słowa rozdzielamy podkreślnikami, np. <code class="docutils literal notranslate"><span class="pre">tear_down</span></code>, <code class="docutils literal notranslate"><span class="pre">set_up</span></code>.
+Jednak konwencja ta nie zawsze jest przestrzegana, nawet w obrębie biblioteki standardowej, czego przykładem jest <code class="docutils literal notranslate"><span class="pre">unittest</span></code>.
+Jest ona wzorowana na bibliotece <code class="docutils literal notranslate"><span class="pre">JUnit</span></code> napisanej w Javie, gdzie obowiązuje konwencja “camelCase”.</p>
+</div>
+<div class="section" id="self-assert">
+<h3><code class="docutils literal notranslate"><span class="pre">self.assert*</span></code><a class="headerlink" href="#self-assert" title="Permalink to this headline">¶</a></h3>
+<p>W środku każdego testu możemy wykorzystać szereg metod zaczynających się od <code class="docutils literal notranslate"><span class="pre">assert</span></code>, np. <code class="docutils literal notranslate"><span class="pre">assertEqual</span></code>.
+Test przechodzi, jeżeli wszystkie takie asercje są prawdziwe.
+Jeżeli chociaż jedna taka asercja nie będzie spełniona, wówczas wykonywanie testu jest natychmiast przerywane i wykonywana jest metoda <code class="docutils literal notranslate"><span class="pre">tearDown</span></code>.</p>
+<p>Najczęściej wykorzystywane asercje to:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">self.assertTrue(condition)</span></code> i <code class="docutils literal notranslate"><span class="pre">self.assertFalse(condition)</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">self.assertEqual(got,</span> <span class="pre">expected)</span></code> i <code class="docutils literal notranslate"><span class="pre">self.assertNotEqual(got,</span> <span class="pre">expected)</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">self.assertIn(element,</span> <span class="pre">collection)</span></code> i <code class="docutils literal notranslate"><span class="pre">self.assertNotIn(element,</span> <span class="pre">collection)</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">self.assertIsInstance(obj,</span> <span class="pre">class_)</span></code> i <code class="docutils literal notranslate"><span class="pre">self.assertNotIsInstance(obj,</span> <span class="pre">class_)</span></code>.</p></li>
+</ul>
+<p>Do sprawdzenia, czy dany blok kodu rzuca wyjątek, można użyć <code class="docutils literal notranslate"><span class="pre">self.assertRaises(ExceptionType)</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UrlConverterTests</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">test_raises_exception_for_empty_string</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+            <span class="n">url_converter</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Jeżeli sprawdzenie typu rzuconego wyjątku to za mało, możemy uzyskać do niego dostęp:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UrlConverterTests</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">test_raises_exception_for_empty_string</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">)</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+            <span class="n">url_converter</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">ex</span><span class="o">.</span><span class="n">message</span><span class="p">,</span> <span class="s1">&#39;Empty url&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="doctest">
+<h2>Doctest<a class="headerlink" href="#doctest" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">doctest</span></code> jest częścią standardowej biblioteki Pythona, ale oferuje zupełnie inne podejście do testowania.
+Zamiast umieszczać testy w osobnych plikach, testy można umieścić w docstringu testowanej funkcji, klasy lub metody.
+Takie podejście ma kilka przewag nad <code class="docutils literal notranslate"><span class="pre">unittest</span></code>:</p>
+<ul class="simple">
+<li><p>Ponieważ testy są częścią docstringa, pełnią wówczas jednocześnie rolę dokumentacji.
+Jeżeli są to krótkie testy, jest to wówczas bardzo dobra dokumentacja.</p></li>
+<li><p>Testy są trzymane blisko obiektu, który jest testowany, co jest generalnie pożądane, ponieważ nie ma potrzeby przeskakiwania między plikami.</p></li>
+</ul>
+<p>Niestety, to podejście ma też pewne istotne wady.
+Przede wszystkim, takie podejście nie skaluje się wraz z coraz bardziej skomplikowanymi testami, co oznacza, że sprawdza się ono głównie w przypadku krótkich testów dla prostych funkcji.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">doctest</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the factorial of n, an exact integer &gt;= 0.</span>
+
+<span class="sd">    &gt;&gt;&gt; factorial(3)</span>
+<span class="sd">    6</span>
+<span class="sd">    &gt;&gt;&gt; factorial(30)</span>
+<span class="sd">    265252859812191058636308480000000</span>
+<span class="sd">    &gt;&gt;&gt; factorial(-1)</span>
+<span class="sd">    Traceback (most recent call last):</span>
+<span class="sd">        ...</span>
+<span class="sd">    ValueError: n must be &gt;= 0</span>
+<span class="sd">    &gt;&gt;&gt; [factorial(n) for n in range(6)]</span>
+<span class="sd">    [1, 1, 2, 6, 24, 120]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;n must be &gt;= 0&quot;</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">factor</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">while</span> <span class="n">factor</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">*=</span> <span class="n">factor</span>
+        <span class="n">factor</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="c1"># Uruchomienie testów</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pytest">
+<h2>Pytest<a class="headerlink" href="#pytest" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Wprowadzenie<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Zasadniczą wadą biblioteki <code class="docutils literal notranslate"><span class="pre">unittest</span></code> jest rozwlekłość pisanych w nich testów.
+Każdy test musi być metodą umieszczoną w klasie.
+Nazwy metod takie jak <code class="docutils literal notranslate"><span class="pre">self.assertEqual</span></code> są dosyć rozwlekłe.
+Czy można pisać krótsze, czytelniejsze testy?
+Odpowiedź brzmi tak, wystarczy doinstalować bibliotekę <code class="docutils literal notranslate"><span class="pre">pytest</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install pytest
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">pytest</span></code> pozwala umieścić testy w funkcjach, których nazwa zaczyna się od <code class="docutils literal notranslate"><span class="pre">test_</span></code>.
+Ponadto, można użyć asercji zamiast metod takich jak <code class="docutils literal notranslate"><span class="pre">self.assertEqual</span></code>.</p>
+</div>
+<div class="section" id="id2">
+<h3>Przykład<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># my_module.py</span>
+<span class="k">def</span> <span class="nf">inc</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Zero is not valid value.&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="c1"># test_my_module.py</span>
+<span class="kn">import</span> <span class="nn">pytest</span>
+
+<span class="kn">from</span> <span class="nn">my_module</span> <span class="kn">import</span> <span class="n">inc</span>
+
+<span class="k">def</span> <span class="nf">test_answer</span><span class="p">():</span>
+    <span class="c1"># Poniższa asercja jest znacznie czytelniejsza niż self.assertEqual(inc(3), 4)</span>
+    <span class="k">assert</span> <span class="n">inc</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span>
+
+<span class="k">def</span> <span class="nf">test_invalid_argument</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+        <span class="n">func</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>Uruchamianie testów<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">pytest</span></code>, podobnie jak <code class="docutils literal notranslate"><span class="pre">unittest</span></code> potrafi sam znaleźć wszystkie testy w aktualnym katalogu i podkatalogach.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pytest
+
+platform linux -- Python <span class="m">3</span>.5.2, pytest-3.0.4, py-1.4.31, pluggy-0.4.0
+rootdir: doc, inifile:
+collected <span class="m">2</span> items
+
+test_my_module.py ..
+
+<span class="m">2</span> passed <span class="k">in</span> <span class="m">0</span>.04 seconds
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="packages.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Moduły i pakiety</p>
+            </div>
+        </a>
+    </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Krystian Piękoś<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

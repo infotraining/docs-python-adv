@@ -1,0 +1,658 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menadżery kontekstu &#8212; Zaawansowane programowanie w języku Python</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Metaklasy" href="metaclasses.html" />
+    <link rel="prev" title="Dekoratory funkcji i klas" href="decorators.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Zaawansowane programowanie w języku Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Zaawansowane programowanie w języku Python
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="classes.html">
+   Klasy i obiekty - elementy zaawansowane
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="builtins.html">
+   Optymalne wykorzystanie wbudowanych typów Pythona
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="builtin-types-big-o.html">
+     Wydajność operacji na typach wbudowanych
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="builtin-types.html">
+     Moduł collections
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="functions.html">
+   Funkcje - elementy zaawansowane
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="iterators.html">
+   Elementy programowania funkcyjnego
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="decorators.html">
+   Dekoratory funkcji i klas
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Menadżery kontekstu
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="metaclasses.html">
+   Metaklasy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="packages.html">
+   Moduły i pakiety
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="unit-tests.html">
+   Testy jednostkowe
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/context-managers.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/infotraining/docs-python-adv"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/infotraining/docs-python-adv/issues/new?title=Issue%20on%20page%20%2Fcontext-managers.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/infotraining/docs-python-adv/master?urlpath=tree/context-managers.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wprowadzenie">
+   Wprowadzenie
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wyrazenie-with">
+   Wyrażenie
+   <em>
+    with
+   </em>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#protokol-menadzera-kontekstu">
+   Protokół menadżera kontekstu
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#metoda-enter">
+     Metoda
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       __enter__
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#metoda-exit">
+     Metoda
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       __exit__
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contextlib-contextmanager">
+   contextlib.contextmanager
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="menadzery-kontekstu">
+<h1>Menadżery kontekstu<a class="headerlink" href="#menadzery-kontekstu" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="wprowadzenie">
+<h2>Wprowadzenie<a class="headerlink" href="#wprowadzenie" title="Permalink to this headline">¶</a></h2>
+<p>Często spotykany w zarządzaniu zasobami jest następujący idiom:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">do_setup</span><span class="p">()</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">do_task</span><span class="p">()</span>
+<span class="k">except</span> <span class="n">SomeError</span><span class="p">:</span>
+    <span class="n">handle_the_error</span><span class="p">()</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">do_cleanup</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="wyrazenie-with">
+<h2>Wyrażenie <em>with</em><a class="headerlink" href="#wyrazenie-with" title="Permalink to this headline">¶</a></h2>
+<p>Aby uprościć i uodpornić się na błędy programisty, od Pythona 2.5 wzwyż dostępne jest wyrażenie <em>with</em>.</p>
+<p>Menedżer kontekstu (<em>context manager</em>) jest odpowiedzialny za zarządzanie zasobami wewnątrz bloku kodu.</p>
+<p>Najczęściej tworzy te zasoby na początku bloku, a zwalnia na końcu.</p>
+<p>Na przykład, menadżer kontekstu dla plików upewnia się, że pliki zostały prawidłowo zamknięte po zakończeniu bloku, nawet jeśli zostanie zgłoszony wyjątek.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;myfile.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;wt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;foo bar&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Odpowiednikiem bloku:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">VAR</span> <span class="o">=</span> <span class="n">EXPR</span><span class="p">:</span>
+    <span class="n">BLOCK</span>
+</pre></div>
+</div>
+<p>jest zapis:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">VAR</span> <span class="o">=</span> <span class="n">EXPR</span>
+<span class="n">VAR</span><span class="o">.</span><span class="fm">__enter__</span><span class="p">()</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">BLOCK</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">VAR</span><span class="o">.</span><span class="fm">__exit__</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="protokol-menadzera-kontekstu">
+<h2>Protokół menadżera kontekstu<a class="headerlink" href="#protokol-menadzera-kontekstu" title="Permalink to this headline">¶</a></h2>
+<p>Menedżer kontekstu jest klasą posiadającą dwie metody specjalne:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__enter__</span></code> - metoda wywoływana na samym początku bloku wewnątrz <em>with</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__exit__</span></code> - metoda jest odpowiednikiem <code class="docutils literal notranslate"><span class="pre">finally:</span></code>, wywoływana po zakończeniu bloku <code class="docutils literal notranslate"><span class="pre">with</span></code>.</p></li>
+</ul>
+<p>Poniżej przedstawiono przykładowy, prosty menadżer kontekstu:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Context</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;__init__()&#39;</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;__enter__()&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+    
+    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;__exit__()&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">Context</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Doing work inside context&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>__init__()
+__enter__()
+Doing work inside context
+__exit__()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="metoda-enter">
+<h3>Metoda <code class="docutils literal notranslate"><span class="pre">__enter__</span></code><a class="headerlink" href="#metoda-enter" title="Permalink to this headline">¶</a></h3>
+<p>Wartością zwracaną przez menadżera kontekstu w funkcji <code class="docutils literal notranslate"><span class="pre">__enter__</span></code> może być obiekt, który zostanie przypisany do zmiennej występującej po <em>as</em>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">def</span> <span class="nf">blackhole</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">SuppressOutput</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Context.__enter__()&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">,</span> <span class="n">blackhole</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">write</span>
+
+    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">):</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;__exit__()&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">SuppressOutput</span><span class="p">()</span> <span class="k">as</span> <span class="n">stdout_write</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;That won</span><span class="se">\&#39;</span><span class="s1">t be printed&#39;</span><span class="p">)</span>
+    <span class="n">stdout_write</span><span class="p">(</span><span class="s1">&#39;But this one will be printed</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Context.__enter__()
+But this one will be printed
+__exit__()
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="metoda-exit">
+<h3>Metoda <code class="docutils literal notranslate"><span class="pre">__exit__</span></code><a class="headerlink" href="#metoda-exit" title="Permalink to this headline">¶</a></h3>
+<p>Do metody <code class="docutils literal notranslate"><span class="pre">__exit__</span></code> trafia informacja o wyjątkach, jakie pojawiły się bloku
+<code class="docutils literal notranslate"><span class="pre">with</span></code>.</p>
+<ul class="simple">
+<li><p>Jeśli metoda <code class="docutils literal notranslate"><span class="pre">__exit__</span></code> zwraca <code class="docutils literal notranslate"><span class="pre">true</span></code>, to wyjątek został
+obsłużony przez menadżera kontekstu.</p></li>
+<li><p>Jeśli zwrócona zostanie wartość <code class="docutils literal notranslate"><span class="pre">false</span></code>, to wyjątek będzie propagowany dalej.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Context</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">excpt_type</span><span class="p">,</span> <span class="n">excpt_val</span><span class="p">,</span> <span class="n">excpt_tb</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exception type:&quot;</span><span class="p">,</span> <span class="n">excpt_type</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exception value:&quot;</span><span class="p">,</span> <span class="n">excpt_val</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Traceback object:&quot;</span><span class="p">,</span> <span class="n">excpt_tb</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>  <span class="c1"># or False</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">Context</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception type: None
+Exception value: None
+Traceback object: None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">Context</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception type: &lt;class &#39;ZeroDivisionError&#39;&gt;
+Exception value: division by zero
+Traceback object: &lt;traceback object at 0x7f65b09363c0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="contextlib-contextmanager">
+<h2>contextlib.contextmanager<a class="headerlink" href="#contextlib-contextmanager" title="Permalink to this headline">¶</a></h2>
+<p>W prostych przypadkach zamiast tworzyć klasę, możemy skorzystać z gotowego dekoratora zawartego w module <em>contextlib</em>, który konwertuje składnię funkcji do postaci menadżera kontekstu:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span>
+
+<span class="nd">@contextmanager</span>
+<span class="k">def</span> <span class="nf">make_context</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">prepare_resource</span><span class="p">()</span>
+        <span class="k">yield</span> <span class="n">context_object</span>
+    <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="n">handle_exception_here</span><span class="p">()</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">do_clean_up</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Przykładowy prosty menadżer kontekstu napisany z użyciem <code class="docutils literal notranslate"><span class="pre">contextmanager</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span>
+
+<span class="nd">@contextmanager</span>
+<span class="k">def</span> <span class="nf">Shouter</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;going in&#39;</span><span class="p">)</span>
+    <span class="k">yield</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;coming out&#39;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">Shouter</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;inside&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>going in
+inside
+coming out
+</pre></div>
+</div>
+</div>
+</div>
+<p>Jeżeli chcemy obsłużyć rzucone przez funkcję wyjątki, możemy to zrobić w następujący sposób:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@contextmanager</span>
+<span class="k">def</span> <span class="nf">Shouter</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;going in&#39;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">yield</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error!&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;no error&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">Shouter</span><span class="p">():</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>going in
+no error
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">Shouter</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>going in
+Error!
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="decorators.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Dekoratory funkcji i klas</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="metaclasses.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Metaklasy</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Krystian Piękoś<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

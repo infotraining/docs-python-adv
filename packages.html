@@ -1,0 +1,591 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moduły i pakiety &#8212; Zaawansowane programowanie w języku Python</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Testy jednostkowe" href="unit-tests.html" />
+    <link rel="prev" title="Metaklasy" href="metaclasses.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Zaawansowane programowanie w języku Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Zaawansowane programowanie w języku Python
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="classes.html">
+   Klasy i obiekty - elementy zaawansowane
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="builtins.html">
+   Optymalne wykorzystanie wbudowanych typów Pythona
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="builtin-types-big-o.html">
+     Wydajność operacji na typach wbudowanych
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="builtin-types.html">
+     Moduł collections
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="functions.html">
+   Funkcje - elementy zaawansowane
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="iterators.html">
+   Elementy programowania funkcyjnego
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="decorators.html">
+   Dekoratory funkcji i klas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="context-managers.html">
+   Menadżery kontekstu
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="metaclasses.html">
+   Metaklasy
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Moduły i pakiety
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="unit-tests.html">
+   Testy jednostkowe
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/packages.rst"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.rst</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/infotraining/docs-python-adv"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/infotraining/docs-python-adv/issues/new?title=Issue%20on%20page%20%2Fpackages.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#moduly">
+   Moduły
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wprowadzenie">
+     Wprowadzenie
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-modulow">
+     Import modułów
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lokalizacja-modulow-pythonpath">
+     Lokalizacja modułów - PYTHONPATH
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#przestrzen-nazw-modulu">
+     Przestrzeń nazw modułu
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modyfikacja-modulow">
+     Modyfikacja modułów
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ukrywanie-danych-w-modulach">
+     Ukrywanie danych w modułach
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pakiety">
+   Pakiety
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Wprowadzenie
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#importowanie-pakietow">
+     Importowanie pakietów
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="moduly-i-pakiety">
+<h1>Moduły i pakiety<a class="headerlink" href="#moduly-i-pakiety" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="moduly">
+<h2>Moduły<a class="headerlink" href="#moduly" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="wprowadzenie">
+<h3>Wprowadzenie<a class="headerlink" href="#wprowadzenie" title="Permalink to this headline">¶</a></h3>
+<p>Modułem jest plik źródłowy z rozszerzeniem <em>.py</em> zawierający kod Pythona.
+Moduł może zawierać definicje funkcji, klas, a także niezależny od nich kod.
+Moduł może zawierać dokumentację informującą o sposobie jego działania i zastosowaniach.</p>
+<p>Wewnątrz modułu jego nazwa (nazwa pliku bez rozszerzenia .py) jest dostępna pod globalną zmienną <em>__name__</em>, pod warunkiem że moduł jest importowany.
+Jeśli jednak moduł nie jest importowany, a uruchomiony z konsoli, wówczas <code class="docutils literal notranslate"><span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;</span></code>.
+Dlatego często występującym idiomem jest sprawdzenie, czy moduł został zaimportowany, czy też uruchomiony:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="o">...</span>  <span class="c1"># kod, który ma być wykonany tylko, gdy moduł jest uruchamiany, a nie importowany</span>
+</pre></div>
+</div>
+<p>Moduł po zaimportowaniu jest obiektem.</p>
+<p>W dalszej części rozdziału będziemy posługiwać się modułem umieszczonym w pliku <em>fibo.py</em>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fibonacci numbers module</span>
+<span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="c1"># wypisuje na standardowe wyjście ciąg Fibonacciego do n</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+
+<span class="k">def</span> <span class="nf">fib2</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="c1"># zwraca ciąg Fibonacciego do n, jako listę</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="import-modulow">
+<h3>Import modułów<a class="headerlink" href="#import-modulow" title="Permalink to this headline">¶</a></h3>
+<p>Przed użyciem modułu należy go zaimportować.</p>
+<p>Istnieją trzy sposoby importu:</p>
+<ul class="simple">
+<li><p>Najprostszy, służący do zaimportowania całego modułu:</p></li>
+</ul>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">fibo</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibo</span><span class="o">.</span><span class="n">fib</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="go">1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibo</span><span class="o">.</span><span class="n">fib2</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="go">1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibo</span><span class="o">.</span><span class="vm">__name__</span>
+<span class="go">&#39;fibo&#39;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Możliwe jest zaimportowanie jedynie określonych funkcji lub klas z danego modułu.
+Sam moduł <code class="docutils literal notranslate"><span class="pre">fibo</span></code> nie jest wtedy dostępny.
+Dostępna jest tylko zaimportowana funkcja <code class="docutils literal notranslate"><span class="pre">fib</span></code>.</p></li>
+</ul>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">fibo</span> <span class="kn">import</span> <span class="n">fib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fib</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+<span class="go">1 1 2 3 5 8 13 21 34 55 89 144 233 377</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fib2</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>  <span class="c1"># funkcja fib2 nie została zaimportowana</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="gp">...</span>
+<span class="go">NameError: name &#39;fib2&#39; is not defined</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibo</span>  <span class="c1"># moduł fibo nie jest dostępny</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="gp">...</span>
+<span class="go">NameError: name &#39;fibo&#39; is not defined</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Możliwe jest zaimportowanie od razu wszystkich obiektów zdefiniowanych w danym module, bez ich wyliczania.</p>
+<p>Nie jest to jednak rekomendowane, ponieważ nie mamy kontroli nad tym, jakie dokładnie obiekty zostaną zaimportowane.
+W efekcie, możliwa jest sytuacja, w której niechcący przesłaniamy zaimportowaną lub zdefiniowaną wcześniej funkcję lub klasę.</p>
+</li>
+</ul>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ta metoda zostanie przez przypadek przesłonięta.&#39;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">fibo</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fib</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>  <span class="c1"># wykonywana jest funkcja fib z modułu fibo, zamiast lokalnej funkcji</span>
+<span class="go">1 1 2 3 5 8 13 21 34 55 89 144 233 377</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fib2</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+<span class="go">[1 1 2 3 5 8 13 21 34 55 89 144 233 377]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibo</span>  <span class="c1"># sam moduł nie jest dostępny</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="gp">...</span>
+<span class="go">NameError: name &#39;fibo&#39; is not defined</span>
+</pre></div>
+</div>
+<p>W dwóch pierwszych przypadkach możliwe jest także zaimportowanie modułu lub zdefiniowanych w nim atrybutów pod inną nazwą:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">fibo</span> <span class="k">as</span> <span class="nn">fibo2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">fibo</span> <span class="kn">import</span> <span class="n">fib</span><span class="p">,</span> <span class="n">fib2</span> <span class="k">as</span> <span class="n">fib22</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="lokalizacja-modulow-pythonpath">
+<h3>Lokalizacja modułów - PYTHONPATH<a class="headerlink" href="#lokalizacja-modulow-pythonpath" title="Permalink to this headline">¶</a></h3>
+<p>Kiedy moduł o nazwie <em>mname</em> jest importowany, interpreter przeszukuje:</p>
+<ul class="simple">
+<li><p>bieżący katalog,</p></li>
+<li><p>listę katalogów określoną w zmiennej systemowej <em>PYTHONPATH</em></p></li>
+<li><p>oraz domyślną ścieżkę instalacji (np. <code class="docutils literal notranslate"><span class="pre">/usr/local/lib/python</span></code>).</p></li>
+</ul>
+<p><em>sys.path</em> jest lista katalogów przeglądanych przez interpreter w trakcie wykonywania instrukcji import.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">path</span>
+<span class="go"> [&#39;&#39;,</span>
+<span class="go"> &#39;C:\\Python27\\lib\\site-packages\\rested-1.1.0-py2.7.egg&#39;,</span>
+<span class="go"> &#39;C:\\Program Files (x86)\\DreamPie\\share\\dreampie&#39;,</span>
+<span class="go"> &#39;C:\\Python27\\python27.zip&#39;,</span>
+<span class="go"> &#39;C:\\Python27\\DLLs&#39;,</span>
+<span class="go">...]</span>
+</pre></div>
+</div>
+<p>W szczególności, lista ta może zostać zmodyfikowana, jeżeli chcemy ładować moduły z określonego katalogu.</p>
+</div>
+<div class="section" id="przestrzen-nazw-modulu">
+<h3>Przestrzeń nazw modułu<a class="headerlink" href="#przestrzen-nazw-modulu" title="Permalink to this headline">¶</a></h3>
+<p>Pliki modułów podczas operacji importowania stają się obiektami.
+Obiekty te zawierają zmienne istniejące w module:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">fibo</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fibo</span><span class="o">.</span><span class="vm">__dict__</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;__&quot;</span><span class="p">)])</span>
+<span class="go">[&#39;fib&#39;, &#39;fib2&#39;]</span>
+</pre></div>
+</div>
+<p>Podczas importu wykonywane są wszystkie instrukcje zawarte w module.
+Przypisania na najwyższym poziomie modułu tworzą atrybuty obiektu modułu.
+Dostęp do przestrzeni nazw modułu odbywa się za pomocą <em>__dict__</em> lub <em>dir(M)</em></p>
+</div>
+<div class="section" id="modyfikacja-modulow">
+<h3>Modyfikacja modułów<a class="headerlink" href="#modyfikacja-modulow" title="Permalink to this headline">¶</a></h3>
+<p>Operacja importowania modułu odbywa się tylko raz, podczas pierwszego użycia instrukcji <em>import</em> lub <em>from</em>.
+Ponowne użycie instrukcji <em>import</em> lub <em>from</em> do zaimportowania raz załadowanego modułu nie spowoduje ponownego wykonania kodu tego modułu, nawet jeżeli instrukcje importu znajdują się w innym pliku.
+Aby jeszcze raz załadować (wykonać) moduł, należy użyć funkcji <code class="docutils literal notranslate"><span class="pre">importlib.reload</span></code>.
+W Pythonie 2 jest to wbudowana funkcja, tzn. nie trzeba jej importować.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">fibo</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibo</span><span class="o">.</span><span class="n">fib</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">importlib</span> <span class="kn">import</span> <span class="n">reload</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">imp</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">fibo</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Funkcja <code class="docutils literal notranslate"><span class="pre">reload</span></code> jest przydatna przy jednoczesnej pracy w pliku i interaktywnej konsoli.
+Po zmodyfikowaniu pliku, możemy załadować jego nowszą wersję wywołując <code class="docutils literal notranslate"><span class="pre">reload</span></code>.</p>
+</div>
+<div class="section" id="ukrywanie-danych-w-modulach">
+<h3>Ukrywanie danych w modułach<a class="headerlink" href="#ukrywanie-danych-w-modulach" title="Permalink to this headline">¶</a></h3>
+<p>Przy wykonywaniu <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">module</span> <span class="pre">import</span> <span class="pre">*</span></code> importowane są tylko atrybuty, które nie zaczynają się od podkreślnika.
+Tym samym funkcje i klasy zaczynające się od podkreślnika są niejako “chronione” i nie udostępniane innym modułom, chyba że zostaną jawnie zaimportowane (<code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">module</span> <span class="pre">import</span> <span class="pre">_funkcja</span></code>).</p>
+<p>Alternatywnie, w module można zdefiniować specjalny atrybut <code class="docutils literal notranslate"><span class="pre">__all__</span></code>, który określa listę nazw wszystkich obiektów, które są “publiczne”, tzn. importowane przy wykonaniu instrukcji <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">module</span> <span class="pre">import</span> <span class="pre">*</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;fib&#39;</span><span class="p">,</span> <span class="s1">&#39;fib2&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="pakiety">
+<h2>Pakiety<a class="headerlink" href="#pakiety" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Wprowadzenie<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>W celu zorganizowania plików modułów w logiczną całość możemy zorganizować je w strukturę pakietów modułów.
+Jest ona oparta na hierarchii katalogów (folderów) systemu operacyjnego.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">mymodules.fibo</span>
+</pre></div>
+</div>
+<p>Kropka oznacza, że w podkatalogu <em>mymodules</em> znajdziemy moduł <em>fibo</em>.
+Katalog <em>mymodules</em> musi być umieszczony w jednym z katalogów znajdujących się na ścieżce wyszukiwania modułów (np. w zmiennej środowiskowej <em>PYTHONPATH</em>).</p>
+<p>Aby katalogi były przeszukiwane podczas importu, muszą zawierać plik o nazwie <em>__init__.py</em>.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">mycode\</span>
+<span class="go">    mymodules\</span>
+<span class="go">        __init__.py</span>
+<span class="go">        fibo.py</span>
+<span class="go">        fobo.py</span>
+</pre></div>
+</div>
+<p>W powyższym przykładzie, <code class="docutils literal notranslate"><span class="pre">mycode</span></code> <strong>nie</strong> jest pakietem.</p>
+<p>Plik <em>__init__.py</em> może zawierać instrukcje, które zostaną automatycznie wykonane podczas importu pakietu.</p>
+</div>
+<div class="section" id="importowanie-pakietow">
+<h3>Importowanie pakietów<a class="headerlink" href="#importowanie-pakietow" title="Permalink to this headline">¶</a></h3>
+<p>Aby wykonać funkcję <em>foo</em> z modułu <em>fibo</em>, musimy ją zaimportować:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">mymodules.fibo</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mymodules</span><span class="o">.</span><span class="n">fibo</span><span class="o">.</span><span class="n">foo</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>lub:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">mymodules.fibo</span> <span class="k">as</span> <span class="nn">fi</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fi</span><span class="o">.</span><span class="n">foo</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>lub:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mymodules.fibo</span> <span class="kn">import</span> <span class="n">foo</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">foo</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Wewnątrz pliku <code class="docutils literal notranslate"><span class="pre">fobo.py</span></code> możemy zaimportować moduł <code class="docutils literal notranslate"><span class="pre">fibo</span></code> używając względnej ścieżki:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">fibo</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fibo</span><span class="o">.</span><span class="n">foo</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>lub:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">.fibo</span> <span class="kn">import</span> <span class="n">foo</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">foo</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="metaclasses.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Metaklasy</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="unit-tests.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Testy jednostkowe</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Krystian Piękoś<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
