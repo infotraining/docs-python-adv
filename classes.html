@@ -338,9 +338,31 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#przyklad-deskryptora">
-     Przykład deskryptora
+    <a class="reference internal nav-link" href="#rodzaje-deskryptorow">
+     Rodzaje deskryptorów
     </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nazwy-atrybutow-i-deskryptory">
+     Nazwy atrybutów i deskryptory
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kolejnosc-wyszukiwania-nazw-przy-dostepie-do-atrybutow">
+     Kolejność wyszukiwania nazw przy dostępie do atrybutów
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#wywolanie-z-instancji">
+       Wywołanie z instancji
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#wywolanie-z-klasy">
+       Wywołanie z klasy
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#wlasciwosci-properties">
@@ -418,7 +440,7 @@
 <h2>Python jako język obiektowy - podstawowe informacje<a class="headerlink" href="#python-jako-jezyk-obiektowy-podstawowe-informacje" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="wszystko-jest-obiektem">
 <h3>Wszystko jest obiektem<a class="headerlink" href="#wszystko-jest-obiektem" title="Permalink to this headline">¶</a></h3>
-<p>Python jest językiem w pełni obiektowym - wszystko jest obiektem, także wartości prymitywne i funkcje.</p>
+<p>Python jest językiem w pełni obiektowym - wszystko jest obiektem, także wartości typów prymitywnych i funkcje.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="fm">__add__</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -487,9 +509,9 @@ Dzięki temu implementacje ORM (<em>Object-Relational Mapping</em>, mapowanie ob
 <h3>Tożsamość, typ a wartość<a class="headerlink" href="#tozsamosc-typ-a-wartosc" title="Permalink to this headline">¶</a></h3>
 <p>Każdy obiekt posiada:</p>
 <ul class="simple">
-<li><p>tożsamość (<em>identity</em>) - wskazuje na lokalizację obiektu w pamięci i można ją sprawdzić wywołując wbudowaną funkcję <code class="docutils literal notranslate"><span class="pre">id</span></code>;</p></li>
-<li><p>typ (<em>type</em>) opisuje reprezentację obiektu dla Pythona;</p></li>
-<li><p>wartość (<em>value</em>) to dane przechowywane w obiekcie.</p></li>
+<li><p><strong>tożsamość</strong> (<em>identity</em>) - wskazuje na lokalizację obiektu w pamięci i można ją sprawdzić wywołując wbudowaną funkcję <code class="docutils literal notranslate"><span class="pre">id</span></code>;</p></li>
+<li><p><strong>typ</strong> (<em>type</em>) opisuje reprezentację obiektu dla Pythona;</p></li>
+<li><p><strong>wartość</strong> (<em>value</em>) to dane przechowywane w obiekcie.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -499,7 +521,7 @@ Dzięki temu implementacje ORM (<em>Object-Relational Mapping</em>, mapowanie ob
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>139825094350144
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140158599129984
 </pre></div>
 </div>
 </div>
@@ -1104,9 +1126,7 @@ Tak będzie w przypadku klas dziedziczących po <code class="docutils literal no
 </div>
 <div class="section" id="deskryptory">
 <h2>Deskryptory<a class="headerlink" href="#deskryptory" title="Permalink to this headline">¶</a></h2>
-<p>Deskryptorem jest dowolny obiekt, który zawiera przynajmniej jedną z trzech poniższych metod specjalnych.
-Taki obiekt musi pojawić się jako atrybut w obiekcie - “właścicielu”.
-W momencie dostępu do takiego atrybutu wywoływane są odpowiednie metody deskryptora:</p>
+<p>Deskryptorem jest atrybut (obiekt), który zawiera przynajmniej jedną z trzech metod specjalnych tzw. “protokołu deskryptora”.</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Metody specjalne deskryptora</p></th>
@@ -1115,110 +1135,224 @@ W momencie dostępu do takiego atrybutu wywoływane są odpowiednie metody deskr
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">__get__(self,</span> <span class="pre">instance,</span> <span class="pre">owner)</span></code></p></td>
-<td><p>Wywoływana do pobrania atrybutu z klasy - “właściciela”</p></td>
+<td><p>Wywoływana do pobrania atrybutu z obiektu lub klasy “właściciela”</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">__set__(self,</span> <span class="pre">instance,</span> <span class="pre">value)</span></code></p></td>
-<td><p>Wywoływana do ustawienia atrybutu z klasy - “właściciela”</p></td>
+<td><p>Wywoływana do ustawienia wartości atrybutu</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">__delete__(self,</span> <span class="pre">instance)</span></code></p></td>
-<td><p>Wywoływana w czasie usuwania atrybutu w klasie - “właścicielu”</p></td>
+<td><p>Wywoływana w czasie usuwania atrybutu</p></td>
 </tr>
 </tbody>
 </table>
-<div class="section" id="przyklad-deskryptora">
-<h3>Przykład deskryptora<a class="headerlink" href="#przyklad-deskryptora" title="Permalink to this headline">¶</a></h3>
+<p>Taki obiekt musi pojawić się jako atrybut w obiekcie - “właścicielu”. W momencie dostępu do takiego atrybutu wywoływane są odpowiednie metody deskryptora.</p>
+<div class="section" id="rodzaje-deskryptorow">
+<h3>Rodzaje deskryptorów<a class="headerlink" href="#rodzaje-deskryptorow" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>non-data descriptor</strong> - posiada tylko metodę <code class="docutils literal notranslate"><span class="pre">__get__()</span></code>. Przy dostępie do atrybutu podjęta może zostać akcja zaimplementowana w metodzie <code class="docutils literal notranslate"><span class="pre">__get__()</span></code></p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
-<span class="k">class</span> <span class="nc">Die</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sides</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sides</span> <span class="o">=</span> <span class="n">sides</span>
+<span class="k">class</span> <span class="nc">DirectorySize</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">owner_class</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">directory_name</span><span class="p">))</span>
     
-    <span class="k">def</span> <span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">owner</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;self =&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;instance =&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;owner =&#39;</span><span class="p">,</span> <span class="n">owner</span><span class="p">)</span>
-        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sides</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
-    
+<span class="k">class</span> <span class="nc">Directory</span><span class="p">:</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="n">DirectorySize</span><span class="p">()</span> <span class="c1"># descriptor instance</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory_name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">directory_name</span> <span class="o">=</span> <span class="n">directory_name</span> <span class="c1"># regular instance attribute</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">local_dir</span> <span class="o">=</span> <span class="n">Directory</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">local_dir</span><span class="o">.</span><span class="n">size</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>28
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>data descriptor</strong> - posiada zarówno metodę <code class="docutils literal notranslate"><span class="pre">__get__()</span></code> jak i <code class="docutils literal notranslate"><span class="pre">__set__()</span></code>. Może też zawierać definicję metody <code class="docutils literal notranslate"><span class="pre">__delete__()</span></code>. Umożliwia tworzenie obiektu <em>mutable</em>, do którego delegowane są próby dostępu do atrybutu i ustawiania jego wartości.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">LoggedAgeAccess</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">owner_class</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">_age</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Accessing </span><span class="si">%r</span><span class="s1">.</span><span class="si">%r</span><span class="s1"> giving </span><span class="si">%r</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span>
+
     <span class="k">def</span> <span class="fm">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;self =&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;instance =&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;value =&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-    
-    <span class="k">def</span> <span class="fm">__delete__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;self =&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;instance =&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Updating </span><span class="si">%r</span><span class="s1">.</span><span class="si">%r</span><span class="s1"> to </span><span class="si">%r</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">_age</span> <span class="o">=</span> <span class="n">value</span>
 
-<span class="k">class</span> <span class="nc">Game</span><span class="p">:</span>
-    <span class="n">d6</span> <span class="o">=</span> <span class="n">Die</span><span class="p">()</span>
-    <span class="n">d10</span> <span class="o">=</span> <span class="n">Die</span><span class="p">(</span><span class="n">sides</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-    <span class="n">d20</span> <span class="o">=</span> <span class="n">Die</span><span class="p">(</span><span class="n">sides</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="n">LoggedAgeAccess</span><span class="p">()</span>             <span class="c1"># Descriptor instance</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>                <span class="c1"># Regular instance attribute</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>                  <span class="c1"># Calls __set__()</span>
+
+    <span class="k">def</span> <span class="nf">birthday</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">+=</span> <span class="mi">1</span>                   <span class="c1"># Calls both __get__() and __set__()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Game</span><span class="o">.</span><span class="n">d6</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">john</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
+<span class="n">mary</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s2">&quot;Mary&quot;</span><span class="p">,</span> <span class="mi">27</span><span class="p">)</span>
+<span class="n">john</span><span class="o">.</span><span class="n">birthday</span><span class="p">()</span>
+<span class="n">mary</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="mi">30</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>self = &lt;__main__.Die object at 0x7fc85b329460&gt;
-instance = None
-owner = &lt;class &#39;__main__.Game&#39;&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:root:Updating &lt;__main__.Person object at 0x000001BE9E42C490&gt;.&#39;age&#39; to 31
+INFO:root:Updating &lt;__main__.Person object at 0x000001BE9E9E2450&gt;.&#39;age&#39; to 27
+INFO:root:Accessing &lt;__main__.Person object at 0x000001BE9E42C490&gt;.&#39;age&#39; giving 31
+INFO:root:Updating &lt;__main__.Person object at 0x000001BE9E42C490&gt;.&#39;age&#39; to 32
+INFO:root:Updating &lt;__main__.Person object at 0x000001BE9E9E2450&gt;.&#39;age&#39; to 30
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</div>
+</div>
+</div>
+<div class="section" id="nazwy-atrybutow-i-deskryptory">
+<h3>Nazwy atrybutów i deskryptory<a class="headerlink" href="#nazwy-atrybutow-i-deskryptory" title="Permalink to this headline">¶</a></h3>
+<p>Jeśli klasa używa wielu deskryptorów, to często powstaje potrzeba związania obiektu deskryptora z nazwą atrybutu, nad którym deskryptor przejmuje kontrolę. Wykorzystuje się do tego metodę <code class="docutils literal notranslate"><span class="pre">__set_name__()</span></code> w klasie deskryptora:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">LoggedAccess</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="nf">__set_name__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">owner</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">public_name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">private_name</span> <span class="o">=</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">name</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Setting names: </span><span class="si">%r</span><span class="s1"> and </span><span class="si">%r</span><span class="s1">&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">public_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">private_name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">owner_class</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">private_name</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Accessing </span><span class="si">%r</span><span class="s1"> giving </span><span class="si">%r</span><span class="s1">&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">public_name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="fm">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Updating </span><span class="si">%r</span><span class="s1"> to </span><span class="si">%r</span><span class="s1">&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">public_name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">private_name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">LoggedAccess</span><span class="p">()</span>                <span class="c1"># First descriptor instance</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="n">LoggedAccess</span><span class="p">()</span>                 <span class="c1"># Second descriptor instance</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>                 <span class="c1"># Calls the first descriptor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>                   <span class="c1"># Calls the second descriptor</span>
+
+    <span class="k">def</span> <span class="nf">birthday</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:root:Setting names: &#39;name&#39; and &#39;_name&#39;
+INFO:root:Setting names: &#39;age&#39; and &#39;_age&#39;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">game</span> <span class="o">=</span> <span class="n">Game</span><span class="p">()</span>
-<span class="n">game</span><span class="o">.</span><span class="n">d20</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">vars</span><span class="p">(</span><span class="nb">vars</span><span class="p">(</span><span class="n">Person</span><span class="p">)[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>self = &lt;__main__.Die object at 0x7fc85b33b070&gt;
-instance = &lt;__main__.Game object at 0x7fc85b3815b0&gt;
-owner = &lt;class &#39;__main__.Game&#39;&gt;
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;public_name&#39;: &#39;name&#39;, &#39;private_name&#39;: &#39;_name&#39;}
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">game</span><span class="o">.</span><span class="n">d20</span> <span class="o">=</span> <span class="mi">42</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">vars</span><span class="p">(</span><span class="nb">vars</span><span class="p">(</span><span class="n">Person</span><span class="p">)[</span><span class="s1">&#39;age&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>self = &lt;__main__.Die object at 0x7fc85b33b070&gt;
-instance = &lt;__main__.Game object at 0x7fc85b3815b0&gt;
-value = 42
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;public_name&#39;: &#39;age&#39;, &#39;private_name&#39;: &#39;_age&#39;}
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">del</span> <span class="n">game</span><span class="o">.</span><span class="n">d20</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">james</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s2">&quot;James&quot;</span><span class="p">,</span> <span class="mi">43</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>self = &lt;__main__.Die object at 0x7fc85b33b070&gt;
-instance = &lt;__main__.Game object at 0x7fc85b3815b0&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:root:Updating &#39;name&#39; to &#39;James&#39;
+INFO:root:Updating &#39;age&#39; to 43
 </pre></div>
 </div>
 </div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">james</span><span class="o">.</span><span class="n">birthday</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:root:Accessing &#39;age&#39; giving 43
+INFO:root:Updating &#39;age&#39; to 44
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="kolejnosc-wyszukiwania-nazw-przy-dostepie-do-atrybutow">
+<h3>Kolejność wyszukiwania nazw przy dostępie do atrybutów<a class="headerlink" href="#kolejnosc-wyszukiwania-nazw-przy-dostepie-do-atrybutow" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="wywolanie-z-instancji">
+<h4>Wywołanie z instancji<a class="headerlink" href="#wywolanie-z-instancji" title="Permalink to this headline">¶</a></h4>
+<p>Przy próbie dostępu do atrybutu <code class="docutils literal notranslate"><span class="pre">x</span></code> dla obiektu <code class="docutils literal notranslate"><span class="pre">o</span></code> (<code class="docutils literal notranslate"><span class="pre">o.x</span></code>):</p>
+<ul class="simple">
+<li><p><strong>data descriptor</strong>: wartość zwrócona z metody <code class="docutils literal notranslate"><span class="pre">__get__()</span></code> deskryptora pola</p></li>
+<li><p><strong>składowa instancji</strong>: wartość <code class="docutils literal notranslate"><span class="pre">o.</span> <span class="pre">__dict__[x]</span></code></p></li>
+<li><p><strong>non-data descriptor</strong>: wartość zwrócona z metody <code class="docutils literal notranslate"><span class="pre">__get__()</span></code> deskryptora pola</p></li>
+<li><p><strong>składowa klasy</strong>: <code class="docutils literal notranslate"><span class="pre">type(o).__dict__['x']</span></code></p></li>
+<li><p><strong>składowe klas bazowych</strong>: wyszukiwanie w kolejności MRO,</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">__getattr__()</span></code></strong>, jeśli ta metoda została zdefiniowana w klasie</p></li>
+</ul>
+</div>
+<div class="section" id="wywolanie-z-klasy">
+<h4>Wywołanie z klasy<a class="headerlink" href="#wywolanie-z-klasy" title="Permalink to this headline">¶</a></h4>
+<p>Przy próbie dostępu do atrybutu <code class="docutils literal notranslate"><span class="pre">x</span></code> dla klasy <code class="docutils literal notranslate"><span class="pre">C</span></code> (<code class="docutils literal notranslate"><span class="pre">C.x</span></code>):</p>
+<ul class="simple">
+<li><p><strong>data descriptor</strong>: wartość zwrócona z metody <code class="docutils literal notranslate"><span class="pre">__get__()</span></code> deskryptora pola klasy</p></li>
+<li><p><strong>składowa klasy lub klas bazowych</strong>: poszukiwanie w <code class="docutils literal notranslate"><span class="pre">C.__dict__['x']</span></code> lub klasach bazowych</p></li>
+<li><p><strong>non-data descriptor</strong>: wartość zwrócona z metody <code class="docutils literal notranslate"><span class="pre">__get__()</span></code> deskryptora pola</p></li>
+</ul>
 </div>
 </div>
 <div class="section" id="wlasciwosci-properties">
@@ -1516,18 +1650,18 @@ Jej użycie powoduje, że wystarczy zdefiniować metody <code class="docutils li
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ComparableMixin</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">return</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span> <span class="o">==</span> <span class="n">other</span><span class="p">)</span>
-    <span class="k">def</span> <span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span> <span class="o">&lt;=</span> <span class="n">other</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span> <span class="o">!=</span> <span class="n">other</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__le__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span> <span class="o">&lt;</span> <span class="n">other</span> <span class="ow">or</span> <span class="p">(</span><span class="bp">self</span> <span class="o">==</span> <span class="n">other</span><span class="p">)</span>
     <span class="k">def</span> <span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span> <span class="o">&lt;=</span> <span class="n">other</span>
     <span class="k">def</span> <span class="fm">__ge__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span> <span class="o">==</span> <span class="n">other</span> <span class="ow">or</span> <span class="bp">self</span> <span class="o">&gt;</span> <span class="n">other</span>
+        <span class="k">return</span> <span class="bp">self</span> <span class="o">&gt;</span> <span class="n">other</span> <span class="ow">or</span> <span class="bp">self</span> <span class="o">==</span> <span class="n">other</span>
 
 <span class="k">class</span> <span class="nc">MyInteger</span><span class="p">(</span><span class="n">ComparableMixin</span><span class="p">):</span>  <span class="c1"># klasą bazową jest &quot;object&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">=</span> <span class="n">i</span>
-    <span class="k">def</span> <span class="fm">__le__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">other</span><span class="o">.</span><span class="n">i</span>
+    <span class="k">def</span> <span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">other</span><span class="o">.</span><span class="n">i</span>
     <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">i</span>
 </pre></div>

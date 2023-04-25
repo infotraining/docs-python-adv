@@ -269,9 +269,11 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#wyrazenie-with">
    Wyrażenie
-   <em>
-    with
-   </em>
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     with
+    </span>
+   </code>
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -333,7 +335,7 @@
 </div>
 </div>
 <div class="section" id="wyrazenie-with">
-<h2>Wyrażenie <em>with</em><a class="headerlink" href="#wyrazenie-with" title="Permalink to this headline">¶</a></h2>
+<h2>Wyrażenie <code class="docutils literal notranslate"><span class="pre">with</span></code><a class="headerlink" href="#wyrazenie-with" title="Permalink to this headline">¶</a></h2>
 <p>Aby uprościć i uodpornić się na błędy programisty, od Pythona 2.5 wzwyż dostępne jest wyrażenie <em>with</em>.</p>
 <p>Menedżer kontekstu (<em>context manager</em>) jest odpowiedzialny za zarządzanie zasobami wewnątrz bloku kodu.</p>
 <p>Najczęściej tworzy te zasoby na początku bloku, a zwalnia na końcu.</p>
@@ -413,13 +415,13 @@ __exit__()
 
 <span class="k">class</span> <span class="nc">SuppressOutput</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Context.__enter__()&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;SuppressOutput.__enter__()&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">,</span> <span class="n">blackhole</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">write</span>
 
     <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">):</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">write</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;__exit__()&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;SuppressOutput.__exit__()&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -433,9 +435,9 @@ __exit__()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Context.__enter__()
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SuppressOutput.__enter__()
 But this one will be printed
-__exit__()
+SuppressOutput.__exit__()
 </pre></div>
 </div>
 </div>
@@ -490,7 +492,7 @@ Traceback object: None
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception type: &lt;class &#39;ZeroDivisionError&#39;&gt;
 Exception value: division by zero
-Traceback object: &lt;traceback object at 0x7f65b09363c0&gt;
+Traceback object: &lt;traceback object at 0x7ffbcafb9400&gt;
 </pre></div>
 </div>
 </div>
@@ -520,19 +522,19 @@ Traceback object: &lt;traceback object at 0x7f65b09363c0&gt;
 
 <span class="nd">@contextmanager</span>
 <span class="k">def</span> <span class="nf">Shouter</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;going in&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Going in&#39;</span><span class="p">)</span>
     <span class="k">yield</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;coming out&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Coming out&#39;</span><span class="p">)</span>
 
 <span class="k">with</span> <span class="n">Shouter</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;inside&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Inside&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>going in
-inside
-coming out
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Going in
+Inside
+Coming out
 </pre></div>
 </div>
 </div>
@@ -542,13 +544,13 @@ coming out
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@contextmanager</span>
 <span class="k">def</span> <span class="nf">Shouter</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;going in&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Going in&#39;</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">yield</span>
     <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error!&#39;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;no error&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No error&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -561,8 +563,8 @@ coming out
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>going in
-no error
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Going in
+No error
 </pre></div>
 </div>
 </div>
@@ -575,7 +577,7 @@ no error
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>going in
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Going in
 Error!
 </pre></div>
 </div>

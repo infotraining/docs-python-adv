@@ -14,7 +14,7 @@ main.bd-content #main-content h1, main.bd-content #main-content h2, main.bd-cont
 }
 
 .header-style, h1, h2, h3, h4, h5, h6 {
-    font-family: "Fira Sans Extra Condensed", "Open Sans", sans-serif;
+    font-family: "Roboto Condensed", "Open Sans", sans-serif;
     font-weight: 500;
     padding-bottom: 5px !important;
     border-bottom: 1px solid #dee2e6;

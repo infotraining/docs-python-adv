@@ -234,6 +234,23 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/infotraining/docs-python-adv/master?urlpath=tree/decorators.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -425,7 +442,7 @@ After hello
 </div>
 </div>
 </div>
-<p>Użycie <code class="docutils literal notranslate"><span class="pre">&#64;shouter</span></code> przed definicją funkcji jest równoważne umieszczeniu za jej definicją linii <code class="docutils literal notranslate"><span class="pre">hello</span> <span class="pre">=</span> <span class="pre">shouter(hello)</span></code>.</p>
+<p>Użycie <code class="docutils literal notranslate"><span class="pre">&#64;shouter</span> <span class="pre">def</span> <span class="pre">hello()</span></code> jest równoważne <code class="docutils literal notranslate"><span class="pre">hello</span> <span class="pre">=</span> <span class="pre">shouter(hello)</span></code>.</p>
 </div>
 <div class="section" id="argumenty-w-dekoratorach">
 <h2>Argumenty w dekoratorach<a class="headerlink" href="#argumenty-w-dekoratorach" title="Permalink to this headline">¶</a></h2>
@@ -634,15 +651,8 @@ After my_func
 </div>
 </div>
 </div>
-<p>co odpowiada:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_func</span> <span class="o">=</span> <span class="n">shouter</span><span class="p">(</span><span class="n">tag</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">)(</span><span class="n">my_func</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Należy pamiętać, że kolejność ma znaczenie.</p>
+<p>Należy pamiętać, że kolejność ma znaczenie.
+Składnia <code class="docutils literal notranslate"><span class="pre">&#64;shouter</span> <span class="pre">&#64;tag(&quot;b&quot;)</span> <span class="pre">def</span> <span class="pre">my_func()</span></code> jest równoważna <code class="docutils literal notranslate"><span class="pre">my_func</span> <span class="pre">shouter(tag(&quot;b&quot;)(my_function)</span></code></p>
 </div>
 <div class="section" id="kiedy-uruchamiane-sa-dekoratory">
 <h2>Kiedy uruchamiane są dekoratory<a class="headerlink" href="#kiedy-uruchamiane-sa-dekoratory" title="Permalink to this headline">¶</a></h2>
@@ -767,43 +777,51 @@ Instancja klasy (uzyskana za pomocą operatora <code class="docutils literal not
 Kod jest nieco prostszy do zrozumienia:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">shout</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;inside decorator&#39;s __init__()&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">functools</span>
+
+<span class="k">class</span> <span class="nc">Shouter</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Inside decorator&#39;s __init__()&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">function</span> <span class="o">=</span> <span class="n">function</span>
+        <span class="n">functools</span><span class="o">.</span><span class="n">update_wrapper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">)</span>
         
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;before call&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;after call&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Before call&quot;</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After call&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@shout</span>
-<span class="k">def</span> <span class="nf">function</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;inside function()&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@Shouter</span>
+<span class="k">def</span> <span class="nf">anwser</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Inside function()&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">input</span> <span class="o">*</span> <span class="mi">42</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>inside decorator&#39;s __init__()
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Inside decorator&#39;s __init__()
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">function</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anwser</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>before call
-inside function()
-after call
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Before call
+Inside function()
+After call
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;******************************************&#39;
 </pre></div>
 </div>
 </div>

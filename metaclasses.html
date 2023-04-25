@@ -272,16 +272,6 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dziedziczenie-i-metaklasy">
-   Dziedziczenie i metaklasy
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#metody-klasy">
-   Metody klasy
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
    Metaklasy
   </a>
@@ -291,42 +281,76 @@
      Funkcja jako metaklasa
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#klasa-metaklasy">
+     Klasa metaklasy
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#metody-specjalne-metaklasy">
+     Metody specjalne metaklasy
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#metoda-specjalna-prepare">
+       Metoda specjalna
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         __prepare__
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#metoda-specjalna-new">
+       Metoda specjalna
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         __new__
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#metoda-specjalna-init">
+       Metoda specjalna
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         __init__
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#metoda-specjalna-call">
+       Metoda specjalna
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         __call__
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#przyklad-metaklasy">
-   Przykład metaklasy
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#metoda-specjalna-new">
-   Metoda specjalna
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     __new__
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#szablon-metaklasy">
-   Szablon metaklasy
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#call-metaklasy">
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     __call__
-    </span>
-   </code>
-   metaklasy
-  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#zastosowanie-metaklas">
    Zastosowanie metaklas
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#singleton-i-metaklasa">
+     Singleton i metaklasa
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modyfikacja-nazw-atrybutow-w-klasie">
+     Modyfikacja nazw atrybutów w klasie
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -387,132 +411,88 @@ Służą do tworzenia nowych obiektów (instancji).</p>
 </div>
 <div class="section" id="dynamiczne-tworzenie-klas">
 <h2>Dynamiczne tworzenie klas<a class="headerlink" href="#dynamiczne-tworzenie-klas" title="Permalink to this headline">¶</a></h2>
-<p>Skoro są obiektami typu <em>type</em>, to możemy je dynamicznie tworzyć:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">choose_class</span><span class="p">(</span><span class="n">system</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">system</span> <span class="o">==</span> <span class="s2">&quot;windows&quot;</span><span class="p">:</span>
-        <span class="k">class</span> <span class="nc">WindowsSpecificClass</span><span class="p">:</span>
-            <span class="k">pass</span>
-        <span class="k">return</span> <span class="n">WindowsSpecificClass</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">class</span> <span class="nc">DefaultClass</span><span class="p">:</span>
-            <span class="k">pass</span>
-        <span class="k">return</span> <span class="n">DefaultClass</span>
-    
-<span class="n">os_class</span> <span class="o">=</span> <span class="n">choose_class</span><span class="p">(</span><span class="s2">&quot;windows&quot;</span><span class="p">)</span>
-
-<span class="n">os_class</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>__main__.choose_class.&lt;locals&gt;.WindowsSpecificClass
-</pre></div>
-</div>
-</div>
-</div>
-<p>Skoro klasa jest typu <em>type</em>, to może można użyć go tak jak klasy?</p>
-<p><code class="docutils literal notranslate"><span class="pre">type</span></code> przyjmuje trzy argumenty:</p>
+<p>Skoro są obiekty klas są obiektami typu <code class="docutils literal notranslate"><span class="pre">type</span></code>, to możemy je też dynamicznie tworzyć.</p>
+<p>Funkcja <code class="docutils literal notranslate"><span class="pre">type</span></code> działa też jak fabryka klas, która przyjmuje trzy argumenty:</p>
 <ul class="simple">
 <li><p>nazwa klasy</p></li>
-<li><p>krotka z rodzicami klasy</p></li>
+<li><p>krotka z klasami bazowymi</p></li>
 <li><p>słownik zawierający nazwy atrybutów i ich wartości</p></li>
 </ul>
+<p>W rezultacie klasę utworzoną w klasyczny sposób:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;foo&#39;</span><span class="p">:</span> <span class="s2">&quot;foo_value&quot;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">:</span> <span class="mi">123</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Shape</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
 
-<span class="n">DynamicClass</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="s2">&quot;DynamicClass&quot;</span><span class="p">,</span> <span class="p">(),</span> <span class="n">attrs</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Rectangle</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+    <span class="n">_id</span> <span class="o">=</span> <span class="s1">&#39;RECTANGLE&#39;</span>
 
-<span class="n">dc</span> <span class="o">=</span> <span class="n">DynamicClass</span><span class="p">()</span>
-<span class="n">dc</span><span class="o">.</span><span class="n">bar</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>123
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="dziedziczenie-i-metaklasy">
-<h2>Dziedziczenie i metaklasy<a class="headerlink" href="#dziedziczenie-i-metaklasy" title="Permalink to this headline">¶</a></h2>
-<p>Używając instrukcji <code class="docutils literal notranslate"><span class="pre">class</span></code> można zdefiniować klasę dziedziczącą po innej klasie w następujący sposób:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyClassChild</span><span class="p">(</span><span class="n">DynamicClass</span><span class="p">):</span>
-    <span class="n">bar</span> <span class="o">=</span> <span class="mi">665</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>        
 
-<span class="n">child_mc</span> <span class="o">=</span> <span class="n">MyClassChild</span><span class="p">()</span>
-<span class="n">child_mc</span><span class="o">.</span><span class="n">bar</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>665
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Drawing </span><span class="si">{</span><span class="n">Rectangle</span><span class="o">.</span><span class="n">_id</span><span class="si">}</span><span class="s1">(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>możemy utworzyć też dynamicznie:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">child_mc</span><span class="o">.</span><span class="n">foo</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;foo_value&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<p>Jeżeli chcemy stworzyć klasę dynamicznie (z użyciem <em>type</em>), to jako drugi argument możemy przekazać krotkę rodziców:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DynamicClassChild</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="s2">&quot;DynamicClassChild&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">DynamicClass</span><span class="p">,),</span> <span class="p">{</span><span class="s1">&#39;bar&#39;</span><span class="p">:</span> <span class="mi">65</span><span class="p">})</span>
-<span class="n">child_dc</span> <span class="o">=</span> <span class="n">DynamicClassChild</span><span class="p">()</span>
-<span class="n">child_dc</span><span class="o">.</span><span class="n">bar</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>65
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">child_dc</span><span class="o">.</span><span class="n">foo</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;foo_value&#39;
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="metody-klasy">
-<h2>Metody klasy<a class="headerlink" href="#metody-klasy" title="Permalink to this headline">¶</a></h2>
-<p>Metody też mogą stanowić część słownika przekazywaną do <code class="docutils literal notranslate"><span class="pre">type</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">echo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Echo: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">foo</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rect_init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>  
 
-<span class="n">AnotherDynamicClass</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="s2">&quot;AnotherDynamicClass&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">DynamicClass</span><span class="p">,),</span> <span class="p">{</span><span class="s1">&#39;bar&#39;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span> <span class="s1">&#39;echo&#39;</span> <span class="p">:</span> <span class="n">echo</span><span class="p">})</span>
-
-<span class="n">acd</span> <span class="o">=</span> <span class="n">AnotherDynamicClass</span><span class="p">()</span>
-<span class="n">acd</span><span class="o">.</span><span class="n">echo</span><span class="p">()</span>
+<span class="n">RectangleT</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="s1">&#39;RectangleT&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">Shape</span><span class="p">,</span> <span class="p">),</span> <span class="p">{</span>
+        <span class="s1">&#39;_id&#39;</span><span class="p">:</span> <span class="s1">&#39;RECTANGLE_T&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;__init__&#39;</span><span class="p">:</span> <span class="n">rect_init</span><span class="p">,</span>
+        <span class="s1">&#39;draw&#39;</span> <span class="p">:</span> <span class="k">lambda</span> <span class="bp">self</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Drawing </span><span class="si">{</span><span class="n">RectangleT</span><span class="o">.</span><span class="n">_id</span><span class="si">}</span><span class="s1">(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RectangleT</span><span class="o">.</span><span class="vm">__name__</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Echo: foo_value
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;RectangleT&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">RectangleT</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rect</span> <span class="o">=</span> <span class="n">RectangleT</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rect</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Drawing RECTANGLE_T(10, 20)
 </pre></div>
 </div>
 </div>
@@ -520,8 +500,7 @@ Służą do tworzenia nowych obiektów (instancji).</p>
 </div>
 <div class="section" id="id1">
 <h2>Metaklasy<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p><em>type</em> jest więc wbudowaną w Pythona metaklasą.</p>
-<p>Jednakże istnieje możliwość stworzenia własnych metaklas.</p>
+<p>Typ <code class="docutils literal notranslate"><span class="pre">type</span></code> jest więc wbudowaną w Pythona metaklasą. Jednakże istnieje możliwość stworzenia własnych metaklas.</p>
 <p>Pod Pythonem 3, składnia jest następująca:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">class_creator</span><span class="p">):</span>
     <span class="o">...</span>
@@ -539,6 +518,7 @@ Poniżej przedstawiono metaklasę, która konwertuje nazwy wszystkich atrybutów
                 <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
     <span class="n">attrs_upper</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">_attrs</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">parents</span><span class="p">,</span> <span class="n">attrs_upper</span><span class="p">)</span>
+
 
 <span class="k">class</span> <span class="nc">Foo</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">upper_attr</span><span class="p">):</span>
     <span class="n">bar</span> <span class="o">=</span> <span class="s1">&#39;foo&#39;</span>
@@ -560,10 +540,9 @@ Poniżej przedstawiono metaklasę, która konwertuje nazwy wszystkich atrybutów
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="przyklad-metaklasy">
-<h2>Przykład metaklasy<a class="headerlink" href="#przyklad-metaklasy" title="Permalink to this headline">¶</a></h2>
-<p>Zazwyczaj jednak metaklasa jest klasą.</p>
+<div class="section" id="klasa-metaklasy">
+<h3>Klasa metaklasy<a class="headerlink" href="#klasa-metaklasy" title="Permalink to this headline">¶</a></h3>
+<p>Zazwyczaj jednak metaklasa jest klasą dziedziczącą po <code class="docutils literal notranslate"><span class="pre">type</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UpperAttr</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
@@ -593,17 +572,93 @@ Poniżej przedstawiono metaklasę, która konwertuje nazwy wszystkich atrybutów
 </div>
 </div>
 </div>
-<div class="section" id="metoda-specjalna-new">
-<h2>Metoda specjalna <code class="docutils literal notranslate"><span class="pre">__new__</span></code><a class="headerlink" href="#metoda-specjalna-new" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">__new__(cls,</span> <span class="pre">...)</span></code> jest metodą wywoływaną, aby utworzyć nową instancję obiektu.
-Przekazywany jest do niej <em>obiekt klasy</em> oraz argumenty konstruktora.</p>
-<p>Dla porównania, <code class="docutils literal notranslate"><span class="pre">__init__(self,</span> <span class="pre">...)</span></code> jest konstruktorem i jest wykonywany, gdy inicjalizowany jest obiekt (instancja).
-Przekazywany jest do niego <em>obiekt instancji</em>.</p>
+<div class="section" id="metody-specjalne-metaklasy">
+<h3>Metody specjalne metaklasy<a class="headerlink" href="#metody-specjalne-metaklasy" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Type</span>
+
+<span class="k">class</span> <span class="nc">Metaclass</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+    <span class="nd">@classmethod</span> 
+    <span class="k">def</span> <span class="fm">__prepare__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bases</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Type</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span> 
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Metaclass.__prepare__(mcs=</span><span class="si">{</span><span class="n">mcs</span><span class="si">}</span><span class="s1">, name=</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">, bases=</span><span class="si">{</span><span class="n">bases</span><span class="si">!r}</span><span class="s1">, kwargs=</span><span class="si">{</span><span class="n">kwargs</span><span class="si">!r}</span><span class="s1">)&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__prepare__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bases</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Type</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">namespace</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Metaclass.__new__(mcs=</span><span class="si">{</span><span class="n">mcs</span><span class="si">}</span><span class="s1">, name=</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">, bases=</span><span class="si">{</span><span class="n">bases</span><span class="si">!r}</span><span class="s1">, namespace=</span><span class="si">{</span><span class="n">namespace</span><span class="si">!r}</span><span class="s1">, kwargs=</span><span class="si">{</span><span class="n">kwargs</span><span class="si">!r}</span><span class="s1">)&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">namespace</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bases</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Type</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">namespace</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> 
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">cls</span><span class="si">}</span><span class="s1">.__init__(name=</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">, bases=</span><span class="si">{</span><span class="n">bases</span><span class="si">!r}</span><span class="s1">, namespace=</span><span class="si">{</span><span class="n">namespace</span><span class="si">!r}</span><span class="s1">, kwargs=</span><span class="si">{</span><span class="n">kwargs</span><span class="si">!r}</span><span class="s1">)&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">namespace</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> 
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span> 
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">cls</span><span class="si">}</span><span class="s1">.__call__(args=</span><span class="si">{</span><span class="n">args</span><span class="si">!r}</span><span class="s1">, kwargs=</span><span class="si">{</span><span class="n">kwargs</span><span class="si">!r}</span><span class="s1">)&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__call__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="szablon-metaklasy">
-<h2>Szablon metaklasy<a class="headerlink" href="#szablon-metaklasy" title="Permalink to this headline">¶</a></h2>
-<p>Ponieważ metaklasy są tak naprawdę zwykłymi klasami, to mogą podlegać dziedziczeniu.
-Aby zapewnić bezproblemowe dziedziczenie, musimy użyć <code class="docutils literal notranslate"><span class="pre">super()</span></code>:</p>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+
+<span class="k">class</span> <span class="nc">SuperUser</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">Metaclass</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">42</span><span class="p">):</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">665</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="si">}</span><span class="s1">.__init__(id=</span><span class="si">{</span><span class="nb">id</span><span class="si">}</span><span class="s1">, name=</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">set_password</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_password</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Metaclass.__prepare__(mcs=&lt;class &#39;__main__.Metaclass&#39;&gt;, name=SuperUser, bases=(&lt;class &#39;__main__.User&#39;&gt;,), kwargs={&#39;value&#39;: 42})
+Metaclass.__new__(mcs=&lt;class &#39;__main__.Metaclass&#39;&gt;, name=SuperUser, bases=(&lt;class &#39;__main__.User&#39;&gt;,), namespace={&#39;__module__&#39;: &#39;__main__&#39;, &#39;__qualname__&#39;: &#39;SuperUser&#39;, &#39;__annotations__&#39;: {&#39;id&#39;: &lt;class &#39;int&#39;&gt;}, &#39;id&#39;: 665, &#39;__init__&#39;: &lt;function SuperUser.__init__ at 0x7fd1299a15e0&gt;, &#39;set_password&#39;: &lt;function SuperUser.set_password at 0x7fd1299a1670&gt;}, kwargs={&#39;value&#39;: 42})
+&lt;class &#39;__main__.SuperUser&#39;&gt;.__init__(name=SuperUser, bases=(&lt;class &#39;__main__.User&#39;&gt;,), namespace={&#39;__module__&#39;: &#39;__main__&#39;, &#39;__qualname__&#39;: &#39;SuperUser&#39;, &#39;__annotations__&#39;: {&#39;id&#39;: &lt;class &#39;int&#39;&gt;}, &#39;id&#39;: 665, &#39;__init__&#39;: &lt;function SuperUser.__init__ at 0x7fd1299a15e0&gt;, &#39;set_password&#39;: &lt;function SuperUser.set_password at 0x7fd1299a1670&gt;}, kwargs={&#39;value&#39;: 42})
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user</span> <span class="o">=</span> <span class="n">SuperUser</span><span class="p">(</span><span class="mi">667</span><span class="p">,</span> <span class="s2">&quot;admin&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;__main__.SuperUser&#39;&gt;.__call__(args=(667, &#39;admin&#39;), kwargs={})
+&lt;__main__.SuperUser object at 0x7fd12999f310&gt;.__init__(id=667, name=admin)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="metoda-specjalna-prepare">
+<h4>Metoda specjalna <code class="docutils literal notranslate"><span class="pre">__prepare__</span></code><a class="headerlink" href="#metoda-specjalna-prepare" title="Permalink to this headline">¶</a></h4>
+<p>Zadaniem tej metody jest zwrócenie słownika, który zostanie wykorzystany do zainicjowania obiektu <code class="docutils literal notranslate"><span class="pre">__dict__</span></code> w tworzonym obiekcie typu (klasy).</p>
+</div>
+<div class="section" id="metoda-specjalna-new">
+<h4>Metoda specjalna <code class="docutils literal notranslate"><span class="pre">__new__</span></code><a class="headerlink" href="#metoda-specjalna-new" title="Permalink to this headline">¶</a></h4>
+<p>Dostaje jako argument wywołania obiekt <strong>metaklasy</strong>, nazwę tworzonego typu, krotkę klas bazowych i wypełniony słownik z atrybutami. Możliwa jest modyfikacja tych parametrów przed przekazaniem ich (najczęściej) w wywołaniu <code class="docutils literal notranslate"><span class="pre">__new__()</span></code> z klasy bazowej, czyli <code class="docutils literal notranslate"><span class="pre">type.__new__()</span></code></p>
+</div>
+<div class="section" id="metoda-specjalna-init">
+<h4>Metoda specjalna <code class="docutils literal notranslate"><span class="pre">__init__</span></code><a class="headerlink" href="#metoda-specjalna-init" title="Permalink to this headline">¶</a></h4>
+<p>Dostaje jako argument wywołania obiekt utworzonej już klasy, z wypełnionym słownikiem atrybutów.</p>
+</div>
+<div class="section" id="metoda-specjalna-call">
+<h4>Metoda specjalna <code class="docutils literal notranslate"><span class="pre">__call__</span></code><a class="headerlink" href="#metoda-specjalna-call" title="Permalink to this headline">¶</a></h4>
+<p>Metoda wywoływana, gdy tworzona jest instancja docelowej klasy (utworzonej za pomocą danej metaklasy).
+Domyślna implementacja z <code class="docutils literal notranslate"><span class="pre">type</span></code> wywołuje operacje|:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__new__(cls,</span> <span class="pre">*args,</span> <span class="pre">**kwargs)</span></code> - utworzenie instancji klasy</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self,</span> <span class="pre">*args,</span> <span class="pre">**kwargs)</span></code> - inicjalizacja instancji klasy</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UpperAttrChild</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
@@ -616,52 +671,125 @@ Aby zapewnić bezproblemowe dziedziczenie, musimy użyć <code class="docutils l
 </div>
 </div>
 </div>
-<div class="section" id="call-metaklasy">
-<h2><code class="docutils literal notranslate"><span class="pre">__call__</span></code> metaklasy<a class="headerlink" href="#call-metaklasy" title="Permalink to this headline">¶</a></h2>
-<p>Ciekawym aspektem jest użycie metody <code class="docutils literal notranslate"><span class="pre">__call__</span></code>.
-Jest ona wywoływana dla gotowego obiektu klasy wtedy, gdy używamy “wywołania” (operatora <code class="docutils literal notranslate"><span class="pre">()</span></code>)</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Meta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;__call__ of &#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">cls</span><span class="p">))</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;__call__ *args=&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="p">))</span>
-        <span class="k">return</span> <span class="nb">type</span><span class="o">.</span><span class="fm">__call__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Gadget</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">Meta</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">price</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">price</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Initializing Gadget(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">price</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">Gadget</span><span class="p">(</span><span class="s2">&quot;ipad&quot;</span><span class="p">,</span> <span class="mf">1500.0</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>__call__ of  &lt;class &#39;__main__.Gadget&#39;&gt;
-__call__ *args= (&#39;ipad&#39;, 1500.0)
-Initializing Gadget(ipad, 1500.0)
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="zastosowanie-metaklas">
 <h2>Zastosowanie metaklas<a class="headerlink" href="#zastosowanie-metaklas" title="Permalink to this headline">¶</a></h2>
-<p>Metaklasy są nazywane “rozwiązaniem szukającym problemu”.</p>
-<p>W zdecydowanej większości sytuacji ich użycie nie jest konieczne.</p>
-<p>W praktyce, metaklasy są stosowane tam, gdzie API klasy musi być tworzone dynamicznie (np. ORM w Django) oraz do implementacji niektórych wzorców projektowych (np. singleton).</p>
+<p>W praktyce, metaklasy są stosowane tam, gdzie API klasy musi być tworzone dynamicznie (np. ORM w Django) oraz do implementacji niektórych wzorców projektowych.</p>
+<div class="section" id="singleton-i-metaklasa">
+<h3>Singleton i metaklasa<a class="headerlink" href="#singleton-i-metaklasa" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Singleton</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+    <span class="n">_instances</span> <span class="o">=</span> <span class="p">{}</span>
+    
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">cls</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_instances</span><span class="p">:</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">_instances</span><span class="p">[</span><span class="bp">cls</span><span class="p">]</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Singleton</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__call__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_instances</span><span class="p">[</span><span class="bp">cls</span><span class="p">]</span>
+    
+
+<span class="k">class</span> <span class="nc">AsSingleton</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">Singleton</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="k">class</span> <span class="nc">Logger</span><span class="p">(</span><span class="n">AsSingleton</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Executing Logger.__init__(</span><span class="si">{</span><span class="bp">self</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&gt;&gt;</span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logger1</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+<span class="n">logger2</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+
+<span class="n">logger1</span> <span class="ow">is</span> <span class="n">logger2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Executing Logger.__init__(&lt;__main__.Logger object at 0x7fd1299b2370&gt;)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="modyfikacja-nazw-atrybutow-w-klasie">
+<h3>Modyfikacja nazw atrybutów w klasie<a class="headerlink" href="#modyfikacja-nazw-atrybutow-w-klasie" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Mapping</span>
+<span class="kn">import</span> <span class="nn">inflection</span>
+
+<span class="k">class</span> <span class="nc">CaseInterpolationDict</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="n">inflection</span><span class="o">.</span><span class="n">underscore</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="n">value</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">CaseInterpolatedMeta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="fm">__prepare__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">__name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">__bases</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">type</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="o">**</span><span class="n">kwds</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">object</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">CaseInterpolationDict</span><span class="p">()</span>
+    
+
+<span class="k">class</span> <span class="nc">MyUser</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">CaseInterpolatedMeta</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">MyUser</span><span class="p">):</span>    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">firstName</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">lastName</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">firstName</span> <span class="o">=</span> <span class="n">firstName</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lastName</span> <span class="o">=</span> <span class="n">lastName</span>
+
+    <span class="k">def</span> <span class="nf">getDisplayName</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">firstName</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">lastName</span><span class="si">}</span><span class="s2">&quot;</span>
+    
+    <span class="k">def</span> <span class="nf">greetUser</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Hello </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">getDisplayName</span><span class="p">()</span><span class="si">}</span><span class="s2">!&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">User</span><span class="o">.</span><span class="vm">__dict__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mappingproxy({&#39;__module__&#39;: &#39;__main__&#39;,
+              &#39;__init__&#39;: &lt;function __main__.User.__init__(self, firstName: str, lastName: str)&gt;,
+              &#39;getDisplayName&#39;: &lt;function __main__.User.getDisplayName(self)&gt;,
+              &#39;get_display_name&#39;: &lt;function __main__.User.getDisplayName(self)&gt;,
+              &#39;greetUser&#39;: &lt;function __main__.User.greetUser(self)&gt;,
+              &#39;greet_user&#39;: &lt;function __main__.User.greetUser(self)&gt;,
+              &#39;__doc__&#39;: None})
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Doe&quot;</span><span class="p">)</span>
+<span class="n">user</span><span class="o">.</span><span class="n">getDisplayName</span><span class="p">()</span>
+<span class="n">user</span><span class="o">.</span><span class="n">get_display_name</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;John Doe&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 

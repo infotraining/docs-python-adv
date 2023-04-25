@@ -373,6 +373,15 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#islice">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       islice
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#chain">
      <code class="docutils literal notranslate">
       <span class="pre">
@@ -391,10 +400,16 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#takewhile">
+    <a class="reference internal nav-link" href="#takewhile-dropwhile">
      <code class="docutils literal notranslate">
       <span class="pre">
        takewhile
+      </span>
+     </code>
+     &amp;
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       dropwhile
       </span>
      </code>
     </a>
@@ -1019,6 +1034,31 @@ Poniżej przedstawiono prosty kalkulator działający w nieskończonej pętli:</
 </div>
 <p>O ile <code class="docutils literal notranslate"><span class="pre">range</span></code> działa tylko na liczbach całkowitych, to w przypadku <code class="docutils literal notranslate"><span class="pre">count</span></code> krok może być liczbą zmiennoprzecinkową.</p>
 </div>
+<div class="section" id="islice">
+<h3><code class="docutils literal notranslate"><span class="pre">islice</span></code><a class="headerlink" href="#islice" title="Permalink to this headline">¶</a></h3>
+<p>Tworzy iterator, który umożliwia zwrócenie określonych <code class="docutils literal notranslate"><span class="pre">n</span></code> elementów (wycinka) z iterowalnego obiektu (np. generatora):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">islice</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">limit</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">b</span> <span class="o">&lt;=</span> <span class="n">limit</span><span class="p">:</span>
+         <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+         <span class="k">yield</span> <span class="n">a</span>    
+
+<span class="nb">list</span><span class="p">(</span><span class="n">islice</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">(),</span> <span class="mi">15</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="chain">
 <h3><code class="docutils literal notranslate"><span class="pre">chain</span></code><a class="headerlink" href="#chain" title="Permalink to this headline">¶</a></h3>
 <p>Przy użyciu operatora <code class="docutils literal notranslate"><span class="pre">+</span></code> można połączyć (dokonać konkatenacji) dwie listy:</p>
@@ -1106,22 +1146,35 @@ Pierwszy element z tej pary to wspólny klucz, natomiast drugi to iterator zwrac
 </div>
 </div>
 </div>
-<div class="section" id="takewhile">
-<h3><code class="docutils literal notranslate"><span class="pre">takewhile</span></code><a class="headerlink" href="#takewhile" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">takewhile</span></code> działa podobnie do <code class="docutils literal notranslate"><span class="pre">filter</span></code>.
-Przyjmuje dwa argumenty: funkcję zwracającą <code class="docutils literal notranslate"><span class="pre">True</span></code> lub <code class="docutils literal notranslate"><span class="pre">False</span></code> dla każdego elementu kolekcji oraz kolekcję.
-<code class="docutils literal notranslate"><span class="pre">filter</span></code> poszukuje wszystkich elementów, dla których funkcja zwraca <code class="docutils literal notranslate"><span class="pre">True</span></code>,
-natomiast <code class="docutils literal notranslate"><span class="pre">takewhile</span></code> przerywa przeszukiwanie po natrafieniu na pierwszy element, dla którego funkcja zwróciła <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<div class="section" id="takewhile-dropwhile">
+<h3><code class="docutils literal notranslate"><span class="pre">takewhile</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">dropwhile</span></code><a class="headerlink" href="#takewhile-dropwhile" title="Permalink to this headline">¶</a></h3>
+<p>Funkcje <code class="docutils literal notranslate"><span class="pre">takewhile</span></code> i <code class="docutils literal notranslate"><span class="pre">dropwhile</span></code> działa podobnie do <code class="docutils literal notranslate"><span class="pre">filter</span></code>.
+Przyjmuje dwa argumenty: funkcję (predykat) zwracającą <code class="docutils literal notranslate"><span class="pre">True</span></code> lub <code class="docutils literal notranslate"><span class="pre">False</span></code> dla każdego elementu kolekcji oraz kolekcję.</p>
+<p><code class="docutils literal notranslate"><span class="pre">takewhile</span></code> przerywa zwracanie po natrafieniu na pierwszy element, dla którego predykat zwrócił <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">dropwhile</span></code> pomija wszystkie początkowe elementy spełniające predykat.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="c1"># infinite generator of squares</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">takewhile</span><span class="p">,</span> <span class="n">dropwhile</span>
 
-<span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">takewhile</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">squares</span><span class="p">))</span>
+
+<span class="nb">list</span><span class="p">(</span><span class="n">takewhile</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">200</span><span class="p">,</span> <span class="n">fibonacci</span><span class="p">()))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">takewhile</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">dropwhile</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">,</span> <span class="n">fibonacci</span><span class="p">())))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[144, 233, 377, 610, 987]
 </pre></div>
 </div>
 </div>
