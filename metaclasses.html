@@ -581,15 +581,22 @@ Poniżej przedstawiono metaklasę, która konwertuje nazwy wszystkich atrybutów
 <span class="k">class</span> <span class="nc">Metaclass</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
     <span class="nd">@classmethod</span> 
     <span class="k">def</span> <span class="fm">__prepare__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bases</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Type</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span> 
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Metaclass.__prepare__(mcs=</span><span class="si">{</span><span class="n">mcs</span><span class="si">}</span><span class="s1">, name=</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">, bases=</span><span class="si">{</span><span class="n">bases</span><span class="si">!r}</span><span class="s1">, kwargs=</span><span class="si">{</span><span class="n">kwargs</span><span class="si">!r}</span><span class="s1">)&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Metaclass.__prepare__(mcs=</span><span class="si">{</span><span class="n">mcs</span><span class="si">}</span><span class="s1">,</span><span class="se">\n</span><span class="s1">&#39;</span>
+              <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">name=</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">,</span><span class="se">\n</span><span class="s1">&#39;</span>
+              <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">bases=</span><span class="si">{</span><span class="n">bases</span><span class="si">!r}</span><span class="s1">,</span><span class="se">\n</span><span class="s1">&#39;</span>
+              <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">kwargs=</span><span class="si">{</span><span class="n">kwargs</span><span class="si">!r}</span><span class="s1">)&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__prepare__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     
     <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bases</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Type</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">namespace</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Metaclass.__new__(mcs=</span><span class="si">{</span><span class="n">mcs</span><span class="si">}</span><span class="s1">, name=</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">, bases=</span><span class="si">{</span><span class="n">bases</span><span class="si">!r}</span><span class="s1">, namespace=</span><span class="si">{</span><span class="n">namespace</span><span class="si">!r}</span><span class="s1">, kwargs=</span><span class="si">{</span><span class="n">kwargs</span><span class="si">!r}</span><span class="s1">)&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Metaclass.__new__(mcs=</span><span class="si">{</span><span class="n">mcs</span><span class="si">}</span><span class="s1">,</span><span class="se">\n</span><span class="s1">&#39;</span>
+              <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">name=</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">,</span><span class="se">\n</span><span class="s1">&#39;</span>
+              <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">bases=</span><span class="si">{</span><span class="n">bases</span><span class="si">!r}</span><span class="s1">,</span><span class="se">\n</span><span class="s1">&#39;</span>
+              <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">namespace=</span><span class="si">{</span><span class="n">namespace</span><span class="si">!r}</span><span class="s1">,</span><span class="se">\n</span><span class="s1">&#39;</span>
+              <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">kwargs=</span><span class="si">{</span><span class="n">kwargs</span><span class="si">!r}</span><span class="s1">)&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">namespace</span><span class="p">)</span>
     
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bases</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Type</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">namespace</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> 
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">cls</span><span class="si">}</span><span class="s1">.__init__(name=</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">, bases=</span><span class="si">{</span><span class="n">bases</span><span class="si">!r}</span><span class="s1">, namespace=</span><span class="si">{</span><span class="n">namespace</span><span class="si">!r}</span><span class="s1">, kwargs=</span><span class="si">{</span><span class="n">kwargs</span><span class="si">!r}</span><span class="s1">)&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">cls</span><span class="si">}</span><span class="s1">.__init__(name=</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">,</span><span class="se">\n\t</span><span class="s1">bases=</span><span class="si">{</span><span class="n">bases</span><span class="si">!r}</span><span class="s1">,</span><span class="se">\n\t</span><span class="s1">namespace=</span><span class="si">{</span><span class="n">namespace</span><span class="si">!r}</span><span class="s1">,</span><span class="se">\n\t</span><span class="s1">kwargs=</span><span class="si">{</span><span class="n">kwargs</span><span class="si">!r}</span><span class="s1">)&#39;</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">namespace</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> 
 
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span> 
@@ -619,9 +626,19 @@ Poniżej przedstawiono metaklasę, która konwertuje nazwy wszystkich atrybutów
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Metaclass.__prepare__(mcs=&lt;class &#39;__main__.Metaclass&#39;&gt;, name=SuperUser, bases=(&lt;class &#39;__main__.User&#39;&gt;,), kwargs={&#39;value&#39;: 42})
-Metaclass.__new__(mcs=&lt;class &#39;__main__.Metaclass&#39;&gt;, name=SuperUser, bases=(&lt;class &#39;__main__.User&#39;&gt;,), namespace={&#39;__module__&#39;: &#39;__main__&#39;, &#39;__qualname__&#39;: &#39;SuperUser&#39;, &#39;__annotations__&#39;: {&#39;id&#39;: &lt;class &#39;int&#39;&gt;}, &#39;id&#39;: 665, &#39;__init__&#39;: &lt;function SuperUser.__init__ at 0x7fd1299a15e0&gt;, &#39;set_password&#39;: &lt;function SuperUser.set_password at 0x7fd1299a1670&gt;}, kwargs={&#39;value&#39;: 42})
-&lt;class &#39;__main__.SuperUser&#39;&gt;.__init__(name=SuperUser, bases=(&lt;class &#39;__main__.User&#39;&gt;,), namespace={&#39;__module__&#39;: &#39;__main__&#39;, &#39;__qualname__&#39;: &#39;SuperUser&#39;, &#39;__annotations__&#39;: {&#39;id&#39;: &lt;class &#39;int&#39;&gt;}, &#39;id&#39;: 665, &#39;__init__&#39;: &lt;function SuperUser.__init__ at 0x7fd1299a15e0&gt;, &#39;set_password&#39;: &lt;function SuperUser.set_password at 0x7fd1299a1670&gt;}, kwargs={&#39;value&#39;: 42})
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Metaclass.__prepare__(mcs=&lt;class &#39;__main__.Metaclass&#39;&gt;,
+	name=SuperUser,
+	bases=(&lt;class &#39;__main__.User&#39;&gt;,),
+	kwargs={&#39;value&#39;: 42})
+Metaclass.__new__(mcs=&lt;class &#39;__main__.Metaclass&#39;&gt;,
+	name=SuperUser,
+	bases=(&lt;class &#39;__main__.User&#39;&gt;,),
+	namespace={&#39;__module__&#39;: &#39;__main__&#39;, &#39;__qualname__&#39;: &#39;SuperUser&#39;, &#39;__annotations__&#39;: {&#39;id&#39;: &lt;class &#39;int&#39;&gt;}, &#39;id&#39;: 665, &#39;__init__&#39;: &lt;function SuperUser.__init__ at 0x7fe6757215e0&gt;, &#39;set_password&#39;: &lt;function SuperUser.set_password at 0x7fe675721670&gt;},
+	kwargs={&#39;value&#39;: 42})
+&lt;class &#39;__main__.SuperUser&#39;&gt;.__init__(name=SuperUser,
+	bases=(&lt;class &#39;__main__.User&#39;&gt;,),
+	namespace={&#39;__module__&#39;: &#39;__main__&#39;, &#39;__qualname__&#39;: &#39;SuperUser&#39;, &#39;__annotations__&#39;: {&#39;id&#39;: &lt;class &#39;int&#39;&gt;}, &#39;id&#39;: 665, &#39;__init__&#39;: &lt;function SuperUser.__init__ at 0x7fe6757215e0&gt;, &#39;set_password&#39;: &lt;function SuperUser.set_password at 0x7fe675721670&gt;},
+	kwargs={&#39;value&#39;: 42})
 </pre></div>
 </div>
 </div>
@@ -634,18 +651,19 @@ Metaclass.__new__(mcs=&lt;class &#39;__main__.Metaclass&#39;&gt;, name=SuperUser
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;__main__.SuperUser&#39;&gt;.__call__(args=(667, &#39;admin&#39;), kwargs={})
-&lt;__main__.SuperUser object at 0x7fd12999f310&gt;.__init__(id=667, name=admin)
+&lt;__main__.SuperUser object at 0x7fe67571f1c0&gt;.__init__(id=667, name=admin)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="metoda-specjalna-prepare">
 <h4>Metoda specjalna <code class="docutils literal notranslate"><span class="pre">__prepare__</span></code><a class="headerlink" href="#metoda-specjalna-prepare" title="Permalink to this headline">¶</a></h4>
-<p>Zadaniem tej metody jest zwrócenie słownika, który zostanie wykorzystany do zainicjowania obiektu <code class="docutils literal notranslate"><span class="pre">__dict__</span></code> w tworzonym obiekcie typu (klasy).</p>
+<p>Zadaniem tej metody jest zwrócenie słownika, który zostanie wykorzystany do zainicjowania obiektu <code class="docutils literal notranslate"><span class="pre">__dict__</span></code> w tworzonym obiekcie typu (klasy). Domyślna implementacja zwraca pusty słownik (typu <code class="docutils literal notranslate"><span class="pre">dict</span></code>), ale można to zmienić (np. zwrócić wstępnie wypełnioną instancję słownika).</p>
 </div>
 <div class="section" id="metoda-specjalna-new">
 <h4>Metoda specjalna <code class="docutils literal notranslate"><span class="pre">__new__</span></code><a class="headerlink" href="#metoda-specjalna-new" title="Permalink to this headline">¶</a></h4>
-<p>Dostaje jako argument wywołania obiekt <strong>metaklasy</strong>, nazwę tworzonego typu, krotkę klas bazowych i wypełniony słownik z atrybutami. Możliwa jest modyfikacja tych parametrów przed przekazaniem ich (najczęściej) w wywołaniu <code class="docutils literal notranslate"><span class="pre">__new__()</span></code> z klasy bazowej, czyli <code class="docutils literal notranslate"><span class="pre">type.__new__()</span></code></p>
+<p>Jest odpowiedzialna za utworzenie obiektu klasy.
+Dostaje jako argument wywołania obiekt <strong>metaklasy</strong>, nazwę tworzonego typu (klasy), krotkę klas bazowych i wypełniony słownik z atrybutami. Możliwa jest modyfikacja tych parametrów przed przekazaniem ich (najczęściej) w wywołaniu <code class="docutils literal notranslate"><span class="pre">__new__()</span></code> z klasy bazowej, czyli <code class="docutils literal notranslate"><span class="pre">type.__new__()</span></code></p>
 </div>
 <div class="section" id="metoda-specjalna-init">
 <h4>Metoda specjalna <code class="docutils literal notranslate"><span class="pre">__init__</span></code><a class="headerlink" href="#metoda-specjalna-init" title="Permalink to this headline">¶</a></h4>
@@ -659,17 +677,7 @@ Domyślna implementacja z <code class="docutils literal notranslate"><span class
 <li><p><code class="docutils literal notranslate"><span class="pre">__new__(cls,</span> <span class="pre">*args,</span> <span class="pre">**kwargs)</span></code> - utworzenie instancji klasy</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">__init__(self,</span> <span class="pre">*args,</span> <span class="pre">**kwargs)</span></code> - inicjalizacja instancji klasy</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UpperAttrChild</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">parents</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
-        <span class="n">_attrs</span> <span class="o">=</span> <span class="p">((</span><span class="n">name</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
-        <span class="n">attrs_upper</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">_attrs</span><span class="p">)</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">UpperAttrChild</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">parents</span><span class="p">,</span> <span class="n">attrs_upper</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p>Ta implementacja może zostać zmieniona w celu lepszej kontroli sposobu tworzenia instancji klasy.</p>
 </div>
 </div>
 </div>
@@ -713,7 +721,7 @@ Domyślna implementacja z <code class="docutils literal notranslate"><span class
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Executing Logger.__init__(&lt;__main__.Logger object at 0x7fd1299b2370&gt;)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Executing Logger.__init__(&lt;__main__.Logger object at 0x7fe675734c70&gt;)
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
