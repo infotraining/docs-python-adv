@@ -230,11 +230,15 @@ pip install pytest
 ``pytest`` pozwala umieścić testy w funkcjach, których nazwa zaczyna się od ``test_``.
 Ponadto, można użyć asercji zamiast metod takich jak ``self.assertEqual``.
 
-### Przykład
+### Proste testy
+
+W bibliotece każda funkcja zaczynająca się od `test_*` jest traktowana jak test. 
+
+Asercje są przeprowadzane za pomocą standardowej instrukcji `assert`.
 
 ```python
 # my_module.py
-def inc(x):
+def increment(x):
     if x == 0:
         raise ValueError('Zero is not valid value.')
     return x + 1
@@ -244,13 +248,30 @@ import pytest
 
 from my_module import inc
 
-def test_answer():
+def test_increment_returns_next_value():
     # Poniższa asercja jest znacznie czytelniejsza niż self.assertEqual(inc(3), 4)
-    assert inc(3) == 4
+    assert increment(3) == 4
+```
 
-def test_invalid_argument():
+Asercja wyjątków jest przeprowadzana za pomocą menadżera kontekstu `pytest.raises`:
+
+```python
+def test_increment_raises_when_invalid_argument():
     with pytest.raises(ValueError):
-        func(0)
+        increment(0)
+```
+
+### Grupowanie testów w klasach
+
+Testy mogą być grupowane w klasach. Klasa grupująca powinna zaczynać się od `Test*`, w przeciwnym razie testy są pomijane. Nie jest wymagane dziedziczenie po klasie bazowej, tak jak ma to miejsce w bibliotece `unittest`.
+
+```python
+class TestMultiple:
+    def test_first(self):
+        assert 5 == 5
+
+    def test_second(self):
+        assert 10 == 10
 ```
 
 ### Uruchamianie testów
@@ -258,13 +279,185 @@ def test_invalid_argument():
 ``pytest``, podobnie jak ``unittest`` potrafi sam znaleźć wszystkie testy w aktualnym katalogu i podkatalogach.
 
 ```bash
-$ pytest
+$ pytest -v
+```
 
-platform linux -- Python 3.5.2, pytest-3.0.4, py-1.4.31, pluggy-0.4.0
-rootdir: doc, inifile:
-collected 2 items
+```bash
+============ test session starts ============
+platform linux -- Python 3.7.3, pytest-5.4.3, py-1.8.1, pluggy-0.13.1
+cachedir: .pytest_cache
+rootdir: /chatapp
+collected 3 items 
 
-test_my_module.py ..
+test_simple.py::test_something FAILED [ 33%]
+test_simple.py::TestMultiple::test_first PASSED [ 66%]
+test_simple.py::TestMultiple::test_second PASSED [100%]
+```
 
-2 passed in 0.04 seconds
+Przydatną opcją jest `-k EXPRESSION`, która powoduje uruchamienie tylko testów, których nazwa pasuje do podanego wyrażenia tekstowego (case-insensitive):
+
+```bash
+$ pytest -v -k first
+
+$ pytest -v -k "not something"
+```
+
+### Fikstury
+
+Dostarczanie obiektów, skonfigurowanych na potrzeby testu jest realizowane w `pytest` za pomocą funkcji z dekoratorem `@pytest.fixture`. Taka funkcja może być później użyta w teście jako parametr. Powoduje to wstrzyknięcie do testu odpowiednio skonfigurowanego obiektu.
+
+```py
+@pytest.fixture()
+def warehouse():
+    warehouse = InMemoryWarehouse()
+    warehouse.add("ProductA", 50)
+    return warehouse
+
+def test_order_is_filled_if_enough_items_in_warehouse(warehouse):
+    order_service = OrderService(warehouse)
+    order = order_service.process_order("ProductA", 50)
+    assert order.is_filled()
+```
+
+Fikstury mogą też przyjmować jako parametry inne fikstury:
+
+```py
+# Arrange
+@pytest.fixture
+def first_entry():
+    return "a"
+
+# Arrange
+@pytest.fixture
+def order(first_entry):
+    return [first_entry]
+```
+
+```py
+def test_string(order):
+    # Act
+    order.append("b")
+
+    # Assert
+    assert order == ["a", "b"]
+```
+
+Możemy użyć dowolną liczbę fiktur w teście (lub innej fiksturze):
+
+```py
+@pytest.fixture
+def first_entry():
+    return "a"
+
+@pytest.fixture
+def second_entry():
+    return 2
+
+@pytest.fixture
+def order(first_entry, second_entry):
+    return [first_entry, second_entry]
+
+@pytest.fixture
+def expected_list():
+    return ["a", 2, 3.0]
+
+def test_string(order, expected_list):
+    order.append(3.0)
+    assert order == expected_list
+```
+
+Fikstura może być też implementowana jako "fabryka" (może być to potrzebne, gdy wynik fikstury jest potrzebny wiele razy w teście):
+
+```py
+@pytest.fixture
+def make_customer_record():
+    def _make_customer_record(name):
+        return {"name": name, "orders": []}
+
+    return _make_customer_record
+
+
+def test_customer_records(make_customer_record):
+    customer_1 = make_customer_record("Lisa")
+    customer_2 = make_customer_record("Mike")
+    customer_3 = make_customer_record("Meredith")
+```
+
+#### Fikstury - setup & teardown
+
+Implementacja wzorca setup & teardown w `pytest` wykorzystuje generator:
+
+```py
+@pytest.fixture
+def new_user(user_service):
+    # Setup
+    user = user_service.create_user()
+    
+    yield user
+    
+    # Teardown
+    user_service.delete(user)
+
+
+def test_sending_email_to_new_user(new_user):
+    email = Email(subject="Greetings!", body="Welcome")
+    response = new_user.send_email(email)
+    assert response.status == 'OK'
+```
+
+#### Wbudowane fikstury
+
+* `tmp_path` - dostarcza tymczasową ścieżkę do plików, która z każdym uruchomieniem testu jest inna
+
+```py
+def test_tmp(tmp_path):
+    f = tmp_path / "file.txt"
+    print("FILE: ", f)
+
+    f.write_text("Hello World")
+
+    fread = tmp_path / "file.txt"
+    assert fread.read_text() == "Hello World"
+```
+
+```bash
+test_tmppath.py::test_tmp 
+FILE: /tmp/pytest-of-amol/pytest-3/test_tmp0/file.txt
+PASSED
+```
+
+* `capsys` - pozwala odczytać tekst wypisywany w konsoli (`sys.stdout` i `sys.stderr`) 
+
+```py
+def myapp():
+    print("MyApp Started")
+
+def test_capsys(capsys):
+    myapp()
+
+    out, err = capsys.readouterr()
+    
+    assert out == "MyApp Started\n"
+```
+
+### Parametryzacja testów
+
+Dekorator `@mark.paramterize` umożliwia łatwą parametryzacje testów:
+
+```py
+@pytest.mark.parametrize("test_input,expected", [("3+5", 8), ("2+4", 6), ("6*9", 42)])
+def test_eval(test_input, expected):
+    assert eval(test_input) == expected
+```
+
+Parametryzacja może być również stosowana dla całej klasy testów:
+
+```py
+@pytest.mark.parametrize("n,expected", [(1, 2), (3, 4)])
+class TestClass:
+    def test_simple_case(self, n, expected):
+        assert n + 1 == expected
+
+    def test_weird_simple_case(self, n, expected):
+        assert (n * 1) + 1 == expected
 ```
