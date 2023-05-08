@@ -143,6 +143,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="pattern-matching.html">
+   Structural Pattern Matching
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="metaclasses.html">
    Metaklasy
   </a>
@@ -299,6 +304,11 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#metody-operatorowe">
+     Metody operatorowe
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dostep-do-atrybutow">
      Dostęp do atrybutów
     </a>
@@ -423,6 +433,49 @@
    Klasa jako obiekt
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#class-builders-dataclass">
+   Class Builders (
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     @dataclass
+    </span>
+   </code>
+   )
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#parametry-dekoratora-dataclass">
+     Parametry dekoratora
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       @dataclass
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implementacja-skladowych">
+     Implementacja składowych
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#przydatne-metody-dataclass-y">
+     Przydatne metody dataclass’y
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#post-init">
+     Post-init
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pola-klasy">
+     Pola klasy
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
             </nav>
@@ -521,7 +574,7 @@ Dzięki temu implementacje ORM (<em>Object-Relational Mapping</em>, mapowanie ob
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140158599129984
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>139782634301888
 </pre></div>
 </div>
 </div>
@@ -599,43 +652,87 @@ Implementują one operacje, które wywołujemy przy użyciu specjalnej składni 
 <h3>Najważniejsze metody specjalne<a class="headerlink" href="#najwazniejsze-metody-specjalne" title="Permalink to this headline">¶</a></h3>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Metoda specjalna</p></th>
-<th class="head"><p>Opis</p></th>
+<tr class="row-odd"><th class="head"><p>Kategoria</p></th>
+<th class="head"><p>Nazwy metod</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">__new__(cls[,</span> <span class="pre">...])</span></code></p></td>
-<td><p>Stworzenie nowej instancji klasy. Dokładne omówienie tej metody znajduje się w rozdziale o metaklasach.</p></td>
+<tr class="row-even"><td><p>String/bytes representation</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">__repr__</span> <span class="pre">__str__</span> <span class="pre">__format__</span> <span class="pre">__bytes__</span> <span class="pre">__fspath__</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">__init__(self[,</span> <span class="pre">...])</span></code></p></td>
-<td><p>Konstruktor. Metoda wywoływana przy tworzeniu nowej instancji danej klasy.</p></td>
+<tr class="row-odd"><td><p>Konwersja do liczby</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">__bool__</span> <span class="pre">__complex__</span> <span class="pre">__int__</span> <span class="pre">__float__</span> <span class="pre">__hash__</span> <span class="pre">__index__</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">__del__(self)</span></code></p></td>
-<td><p>Destruktor. Ta metoda powinna być przeciążana tylko w szczególnych przypadkach. W większości przypadków lepiej jest utworzyć osobną metodę (np. <code class="docutils literal notranslate"><span class="pre">close</span></code>), która powinna być jawnie wywołana.</p></td>
+<tr class="row-even"><td><p>Emulacja kolekcji</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">__len__</span> <span class="pre">__getitem__</span> <span class="pre">__setitem__</span> <span class="pre">__delitem__</span> <span class="pre">__contains__</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">__repr__(self)</span></code></p></td>
-<td><p>Wywoływana przez funkcję <code class="docutils literal notranslate"><span class="pre">repr()</span></code> i konwersję do ciągów znaków.</p></td>
+<tr class="row-odd"><td><p>Iteracja</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">__iter__</span> <span class="pre">__aiter__</span> <span class="pre">__next__</span> <span class="pre">__anext__</span> <span class="pre">__reversed__</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">__str__(self)</span></code></p></td>
-<td><p>Wywoływana przez funkcję <code class="docutils literal notranslate"><span class="pre">str()</span></code> i <code class="docutils literal notranslate"><span class="pre">print()</span></code></p></td>
+<tr class="row-even"><td><p>Funkcje lub korutyny</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">__call__</span> <span class="pre">__await__</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">__lt__(self,</span> <span class="pre">other)</span></code>, <code class="docutils literal notranslate"><span class="pre">__le__</span></code>, <code class="docutils literal notranslate"><span class="pre">__eq__</span></code>, <code class="docutils literal notranslate"><span class="pre">__ne__</span></code>, <code class="docutils literal notranslate"><span class="pre">__gt__</span></code>, <code class="docutils literal notranslate"><span class="pre">__ge__</span></code></p></td>
-<td><p>Operatory porównania wywoływane przez wyrażenia, takie jak <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&lt;</span> <span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&lt;=</span> <span class="pre">b</span></code> itd.</p></td>
+<tr class="row-odd"><td><p>Menadżer kontekstu</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">__enter__</span> <span class="pre">__exit__</span> <span class="pre">__aexit__</span> <span class="pre">__aenter__</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">__cmp__(self,</span> <span class="pre">other)</span></code></p></td>
-<td><p>Funkcja porównania. Wywoływana, gdy nie zdefiniowano powyższych operatorów.</p></td>
+<tr class="row-even"><td><p>Tworzenie i niszczenie instancji</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">__new__</span> <span class="pre">__init__</span> <span class="pre">__del__</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">__hash__(self)</span></code></p></td>
-<td><p>Wywoływana przez funkcję <code class="docutils literal notranslate"><span class="pre">hash()</span></code>, używana w kolekcjach.</p></td>
+<tr class="row-odd"><td><p>Zarządzanie atrybutami</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">__getattr__</span> <span class="pre">__getattribute__</span> <span class="pre">__setattr__</span> <span class="pre">__delattr__</span> <span class="pre">__dir__</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">__nonzero__(self)</span></code></p></td>
-<td><p>Wywoływana w trakcie sprawdzania wartości <code class="docutils literal notranslate"><span class="pre">bool</span></code>.</p></td>
+<tr class="row-even"><td><p>Deskryptory</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">__get__</span> <span class="pre">__set__</span> <span class="pre">__delete__</span> <span class="pre">__set_name__</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Abstract base classes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">__instancecheck__</span> <span class="pre">__subclasscheck__</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Metaprogramowanie</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">__prepare__</span> <span class="pre">__init_subclass__</span> <span class="pre">__class_getitem__</span> <span class="pre">__mro_entries__</span> </code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="metody-operatorowe">
+<h3>Metody operatorowe<a class="headerlink" href="#metody-operatorowe" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kategoria operatorów</p></th>
+<th class="head"><p>Symbole</p></th>
+<th class="head"><p>Nazwy metod</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Jednoargumentowe</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">+</span> <span class="pre">abs()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">__neg__</span> <span class="pre">__pos__</span> <span class="pre">__abs__</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Porównania</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">&lt;=</span> <span class="pre">==</span> <span class="pre">!=</span> <span class="pre">&gt;</span> <span class="pre">&gt;=</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">__lt__</span> <span class="pre">__le__</span> <span class="pre">__eq__</span> <span class="pre">__ne__</span> <span class="pre">__gt__</span> <span class="pre">__ge__</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Arytmetyczne</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">-</span> <span class="pre">*</span> <span class="pre">/</span> <span class="pre">//</span> <span class="pre">%</span> <span class="pre">&#64;</span> <span class="pre">divmod()</span> <span class="pre">round()</span> <span class="pre">**</span> <span class="pre">pow()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">__add__</span> <span class="pre">__sub__</span> <span class="pre">__mul__</span> <span class="pre">__truediv__</span> <span class="pre">__floordiv__</span> <span class="pre">__mod__</span> <span class="pre">__matmul__</span> <span class="pre">__divmod__</span> <span class="pre">__round__</span> <span class="pre">__pow__</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Arytmetyczne z przypisaniem</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+=</span> <span class="pre">-=</span> <span class="pre">*=</span> <span class="pre">/=</span> <span class="pre">//=</span> <span class="pre">%=</span> <span class="pre">&#64;=</span> <span class="pre">**=</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">__iadd__</span> <span class="pre">__isub__</span> <span class="pre">__imul__</span> <span class="pre">__itruediv__</span> <span class="pre">__ifloordiv__</span> <span class="pre">__imod__</span> <span class="pre">__imatmul__</span> <span class="pre">__ipow__</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Bitowe</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&amp;</span> <span class="pre">\|</span> <span class="pre">^</span> <span class="pre">&lt;&lt;</span> <span class="pre">&gt;&gt;</span> <span class="pre">~</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">__and__</span> <span class="pre">__or__</span> <span class="pre">__xor__</span> <span class="pre">__lshift__</span> <span class="pre">__rshift__</span> <span class="pre">__invert__</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Bitowe z przypisaniem</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&amp;=</span> <span class="pre">\|=</span> <span class="pre">^=</span> <span class="pre">&lt;&lt;=</span> <span class="pre">&gt;&gt;=</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">__iand__</span> <span class="pre">__ior__</span> <span class="pre">__ixor__</span> <span class="pre">__ilshift__</span> <span class="pre">__irshift__</span></code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="dostep-do-atrybutow">
 <h3>Dostęp do atrybutów<a class="headerlink" href="#dostep-do-atrybutow" title="Permalink to this headline">¶</a></h3>
+<p>Dostęp do atrybutów kontrolują poniższe metody specjalne:</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Metoda specjalna</p></th>
@@ -709,6 +806,7 @@ getting first_name
 </div>
 </div>
 </div>
+<p>Oprócz wspomnianych metod</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Metoda specjalna</p></th>
@@ -1439,35 +1537,64 @@ Próby zmiany jej wartości kończyłyby się błędem.</p>
 </div>
 <div class="section" id="sloty">
 <h2>Sloty<a class="headerlink" href="#sloty" title="Permalink to this headline">¶</a></h2>
-<p>Każdy obiekt pythona posiada <strong>dict</strong> - słownik atrybutów.</p>
-<p>Powoduje to spory narzut na pamięć.
-Jeśli nasza klasa nie będzie korzystała z dynamicznej natury takiego słownika, to w klasie można zdefiniować <code class="docutils literal notranslate"><span class="pre">__slots__</span></code> i podać listę wszystkich składowych.</p>
+<p>Każdy obiekt Pythona posiada <code class="docutils literal notranslate"><span class="pre">__dict__</span></code> - słownik atrybutów typu <code class="docutils literal notranslate"><span class="pre">dict</span></code>. W rezultacie dla każdego obiektu mamy dość spory narzut związany ze zużyciem pamięci i czasem dostępu do składowych słownika.</p>
+<p>Jeśli nasza klasa nie zamierza korzystać z dynamicznej natury takiego słownika, to można w klasie zdefiniować atrybut <code class="docutils literal notranslate"><span class="pre">__slots__</span></code> i podać listę wszystkich składowych. Atrybuty wymienione na liście są przechowane w tablicy referencji, która zużywa znacząco mniej pamięci.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Point</span><span class="p">:</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pixel</span><span class="p">:</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Point</span><span class="p">()</span>
-<span class="n">p</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">p</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">20</span>
-<span class="n">p</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mi">30</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Pixel</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Utworzona instancja typu <code class="docutils literal notranslate"><span class="pre">Pixel</span></code> nie posiada słownika <code class="docutils literal notranslate"><span class="pre">__dict__</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="vm">__dict__</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">75</span><span class="o">-</span><span class="mi">0</span><span class="n">ad9e402b8fa</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">p</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">p</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">20</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">p</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">66</span><span class="o">-</span><span class="mi">33</span><span class="n">b2432b7e42</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">p</span><span class="o">.</span><span class="vm">__dict__</span>
 
-<span class="ne">AttributeError</span>: &#39;Point&#39; object has no attribute &#39;z&#39;
+<span class="ne">AttributeError</span>: &#39;Pixel&#39; object has no attribute &#39;__dict__&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Możemy normalnie korzystać z atrybutów <code class="docutils literal notranslate"><span class="pre">x</span></code> i <code class="docutils literal notranslate"><span class="pre">y</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">p</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">20</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Próba ustawienia nowego atrybutu (nie wymienionego na liście slotów) skończy się wyjątkiem:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mi">30</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">68</span><span class="o">-</span><span class="n">cadbcb940683</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">p</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="ne">AttributeError</span>: &#39;Pixel&#39; object has no attribute &#39;z&#39;
 </pre></div>
 </div>
 </div>
@@ -1899,6 +2026,363 @@ Dlatego możemy mówić o <em>obiekcie klasy</em>.
 </div>
 </div>
 <p>Ma to wpływ na wszystkie instancje.</p>
+</div>
+<div class="section" id="class-builders-dataclass">
+<h2>Class Builders (<code class="docutils literal notranslate"><span class="pre">&#64;dataclass</span></code>)<a class="headerlink" href="#class-builders-dataclass" title="Permalink to this headline">¶</a></h2>
+<p>Moduł <code class="docutils literal notranslate"><span class="pre">dataclasses</span></code> dostarcza dekorator, który umożliwia automatyczne generowanie wybranych metod specjalnych, takich jak <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>, <code class="docutils literal notranslate"><span class="pre">__repr__()</span></code> lub <code class="docutils literal notranslate"><span class="pre">__eq__()</span></code>.</p>
+<p>Składowe obiektu, które są wykorzystywane w implementacjach metod, są definiowane na podstawie pól klasy wraz adnotacjami typu.</p>
+<p>Na przykład, dla poniższej klasy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">LineItem</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">unit_price</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">quantity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">total</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">unit_price</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">quantity</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>wygenerowana zostanie funkcja <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>, która wygląda następująco:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">unit_price</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">quantity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">unit_price</span> <span class="o">=</span> <span class="n">unit_price</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">quantity</span> <span class="o">=</span> <span class="n">quantity</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Stosując dekorator <code class="docutils literal notranslate"><span class="pre">&#64;dataclass</span></code> możemy dużo szybciej tworzyć proste klasy i rozbudowywać je dodając do nich potrzebne metody.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">line_1</span> <span class="o">=</span> <span class="n">LineItem</span><span class="p">(</span><span class="s2">&quot;ipad&quot;</span><span class="p">,</span> <span class="mf">7665.0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">repr</span><span class="p">(</span><span class="n">line_1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;LineItem(name=&#39;ipad&#39;, unit_price=7665.0, quantity=1)&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">line_1</span><span class="o">.</span><span class="n">total</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7665.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="parametry-dekoratora-dataclass">
+<h3>Parametry dekoratora <code class="docutils literal notranslate"><span class="pre">&#64;dataclass</span></code><a class="headerlink" href="#parametry-dekoratora-dataclass" title="Permalink to this headline">¶</a></h3>
+<p>Do dekoratora <code class="docutils literal notranslate"><span class="pre">&#64;dataclass</span></code> możemy przekazać następujące paramtetry:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parametr</p></th>
+<th class="head"><p>Wartość domyślna</p></th>
+<th class="head"><p>Efekt (jeśli <code class="docutils literal notranslate"><span class="pre">True</span></code>)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">init</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p>definicja metody <code class="docutils literal notranslate"><span class="pre">__init__</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">repr</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p>definicja metody <code class="docutils literal notranslate"><span class="pre">__repr__</span></code> (jeśli klasa nie definiuje własnej implementacji)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">eq</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p>definicja metody <code class="docutils literal notranslate"><span class="pre">__eq__</span></code> (instancje są porównywane jak krotki)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">order</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>definicja metod <code class="docutils literal notranslate"><span class="pre">__lt__()</span></code>, <code class="docutils literal notranslate"><span class="pre">__le__()</span></code>, <code class="docutils literal notranslate"><span class="pre">__gt__()</span></code>, and <code class="docutils literal notranslate"><span class="pre">__ge__()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">unsafe_hash</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>definicja metody <code class="docutils literal notranslate"><span class="pre">__hash__()</span></code> (ta opcja implikuje, że instancje powinny być <em>immutable</em>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">frozen</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>próba przypisania wartości dla pola generuje wyjątek (instancje są <em>immutable</em>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">match_args</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p>tworzona jest krotka <code class="docutils literal notranslate"><span class="pre">__match_args__</span></code> z listy parametrów metody <code class="docutils literal notranslate"><span class="pre">__init__()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">slots</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p>generowany jest atrybut <code class="docutils literal notranslate"><span class="pre">__slots__</span></code> i nowa klasa jest zwrócona w miejsce klasy ogryginalnej</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@dataclass</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">unsafe_hash</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">age</span><span class="p">:</span> <span class="nb">int</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">people</span> <span class="o">=</span> <span class="p">[</span><span class="n">Person</span><span class="p">(</span><span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="mi">33</span><span class="p">),</span> <span class="n">Person</span><span class="p">(</span><span class="s2">&quot;Eve&quot;</span><span class="p">,</span> <span class="mi">44</span><span class="p">),</span> <span class="n">Person</span><span class="p">(</span><span class="s2">&quot;Adam&quot;</span><span class="p">,</span> <span class="mi">33</span><span class="p">)]</span>
+<span class="nb">sorted</span><span class="p">(</span><span class="n">people</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Person(name=&#39;Adam&#39;, age=33),
+ Person(name=&#39;Eve&#39;, age=44),
+ Person(name=&#39;John&#39;, age=33)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">hash</span><span class="p">(</span><span class="n">people</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-5191814165429172402
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">people</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Unknown&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FrozenInstanceError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">21</span><span class="o">-</span><span class="mi">2</span><span class="n">c1af0d06026</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">people</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Unknown&quot;</span>
+
+<span class="nn">&lt;string&gt;</span> in <span class="ni">__setattr__</span><span class="nt">(self, name, value)</span>
+
+<span class="ne">FrozenInstanceError</span>: cannot assign to field &#39;name&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="implementacja-skladowych">
+<h3>Implementacja składowych<a class="headerlink" href="#implementacja-skladowych" title="Permalink to this headline">¶</a></h3>
+<p>Funkcja <code class="docutils literal notranslate"><span class="pre">field()</span></code> precyzuje sposób, w jaki dane pole jest implementowane.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">field</span>
+
+
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">age</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">compare</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">friends</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="s1">&#39;Person&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="mi">44</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">)</span>
+<span class="n">p1</span> <span class="o">==</span> <span class="n">p2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span><span class="o">.</span><span class="n">friends</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p2</span><span class="p">)</span>
+<span class="n">p1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Person(name=&#39;John&#39;, age=44, friends=[Person(name=&#39;John&#39;, age=23, friends=[])])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Opcje funkcji <code class="docutils literal notranslate"><span class="pre">field()</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">default</span></code> - domyślna wartość dla pola</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">default_factory</span></code> - funkcja bezargumentowa, która tworzy domyślną instancję przypisywaną do pola</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">init</span></code> - jeśli <code class="docutils literal notranslate"><span class="pre">True</span></code>, pole jest użyte jako parametr metody <code class="docutils literal notranslate"><span class="pre">__init__()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">repr</span></code> - jeśli <code class="docutils literal notranslate"><span class="pre">True</span></code>, pole jest użyte w implementacji metody <code class="docutils literal notranslate"><span class="pre">__repr__()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hash</span></code> - jeśli <code class="docutils literal notranslate"><span class="pre">True</span></code>, pole jest użyte w implementacji metody <code class="docutils literal notranslate"><span class="pre">__hash__()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">compare</span></code> - jeśli <code class="docutils literal notranslate"><span class="pre">True</span></code>, pole jest użyte w implementacji metod <code class="docutils literal notranslate"><span class="pre">__eq__()</span></code> i innych</p></li>
+</ul>
+</div>
+<div class="section" id="przydatne-metody-dataclass-y">
+<h3>Przydatne metody dataclass’y<a class="headerlink" href="#przydatne-metody-dataclass-y" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fields()</span></code> - zwraca krotkę pól klasy</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dataclasses</span>
+
+<span class="n">dataclasses</span><span class="o">.</span><span class="n">fields</span><span class="p">(</span><span class="n">Person</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(Field(name=&#39;name&#39;,type=&lt;class &#39;str&#39;&gt;,default=&lt;dataclasses._MISSING_TYPE object at 0x7f8fbd270a60&gt;,default_factory=&lt;dataclasses._MISSING_TYPE object at 0x7f8fbd270a60&gt;,init=True,repr=True,hash=None,compare=True,metadata=mappingproxy({}),_field_type=_FIELD),
+ Field(name=&#39;age&#39;,type=&lt;class &#39;int&#39;&gt;,default=&lt;dataclasses._MISSING_TYPE object at 0x7f8fbd270a60&gt;,default_factory=&lt;dataclasses._MISSING_TYPE object at 0x7f8fbd270a60&gt;,init=True,repr=True,hash=None,compare=False,metadata=mappingproxy({}),_field_type=_FIELD),
+ Field(name=&#39;friends&#39;,type=typing.List[ForwardRef(&#39;Person&#39;)],default=&lt;dataclasses._MISSING_TYPE object at 0x7f8fbd270a60&gt;,default_factory=&lt;class &#39;list&#39;&gt;,init=True,repr=True,hash=None,compare=True,metadata=mappingproxy({}),_field_type=_FIELD))
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">asdict()</span></code> - konweruje instancję dataclass’y do słownika</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataclasses</span><span class="o">.</span><span class="n">asdict</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;name&#39;: &#39;John&#39;,
+ &#39;age&#39;: 44,
+ &#39;friends&#39;: [{&#39;name&#39;: &#39;John&#39;, &#39;age&#39;: 23, &#39;friends&#39;: []}]}
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">astuple()</span></code> - konwertuje instancję do krotki</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataclasses</span><span class="o">.</span><span class="n">astuple</span><span class="p">(</span><span class="n">p2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;John&#39;, 23, [])
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">replace(obj,</span> <span class="pre">**changes)</span></code> - tworzy nową instancję na podstawie <code class="docutils literal notranslate"><span class="pre">obj</span></code> ze zmienionymi wartościami pól z <code class="docutils literal notranslate"><span class="pre">**changes</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataclasses</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">88</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Person(name=&#39;John&#39;, age=88, friends=[Person(name=&#39;John&#39;, age=23, friends=[])])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="post-init">
+<h3>Post-init<a class="headerlink" href="#post-init" title="Permalink to this headline">¶</a></h3>
+<p>Metoda <code class="docutils literal notranslate"><span class="pre">__post_init__()</span></code> umożliwia inicjalizację tzw. pól wyliczanych:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">LineItem</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">unit_price</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">quantity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">total</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">unit_price</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">quantity</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">line_1</span> <span class="o">=</span> <span class="n">LineItem</span><span class="p">(</span><span class="s2">&quot;ipad&quot;</span><span class="p">,</span> <span class="mf">7999.99</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">line_1</span><span class="o">.</span><span class="n">total</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15999.98
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="pola-klasy">
+<h3>Pola klasy<a class="headerlink" href="#pola-klasy" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">ClassVar</span>
+
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">Entity</span><span class="p">:</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">count</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+        
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">entities</span> <span class="o">=</span> <span class="p">[</span><span class="n">Entity</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Entity</span><span class="o">.</span><span class="n">count</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
