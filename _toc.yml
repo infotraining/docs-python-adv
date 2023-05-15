@@ -10,6 +10,7 @@ sections:
   - file: iterators
   - file: decorators
   - file: context-managers
+  - file: pattern-matching
   - file: metaclasses
   - file: packages
   - file: unit-tests

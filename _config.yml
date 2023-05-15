@@ -4,6 +4,8 @@
 title: Zaawansowane programowanie w języku Python
 author: Krystian Piękoś
 logo: logo.png
+exclude_patterns: [_build, _legacy, _rejected, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
+only_build_toc_files: true
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -13,7 +15,7 @@ execute:
 # Define the name of the latex output file for PDF builds
 latex:
   latex_documents:
-    targetname: book.tex
+    targetname: python-adv.tex
 
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
