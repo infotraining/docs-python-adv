@@ -1,360 +1,415 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Structural Pattern Matching &#8212; Zaawansowane programowanie w języku Python</title>
-    
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pattern-matching';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Metaklasy" href="metaclasses.html" />
     <link rel="prev" title="Menadżery kontekstu" href="context-managers.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Zaawansowane programowanie w języku Python</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   Zaawansowane programowanie w języku Python
-  </a>
- </li>
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Zaawansowane programowanie w języku Python
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="classes.html">Klasy i obiekty - elementy zaawansowane</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="builtins.html">Optymalne wykorzystanie wbudowanych typów Pythona</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="builtin-types-big-o.html">Wydajność operacji na typach wbudowanych</a></li>
+<li class="toctree-l2"><a class="reference internal" href="builtin-types.html">Moduł collections</a></li>
+
+
+
+
 </ul>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="classes.html">
-   Klasy i obiekty - elementy zaawansowane
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="builtins.html">
-   Optymalne wykorzystanie wbudowanych typów Pythona
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="builtin-types-big-o.html">
-     Wydajność operacji na typach wbudowanych
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="builtin-types.html">
-     Moduł collections
-    </a>
-   </li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Funkcje - elementy zaawansowane</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iterators.html">Elementy programowania funkcyjnego</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorators.html">Dekoratory funkcji i klas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="context-managers.html">Menadżery kontekstu</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Structural Pattern Matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metaclasses.html">Metaklasy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packages.html">Moduły i pakiety</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unit-tests.html">Testy jednostkowe</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/infotraining/docs-python-adv" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/infotraining/docs-python-adv/issues/new?title=Issue%20on%20page%20%2Fpattern-matching.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
   </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="functions.html">
-   Funkcje - elementy zaawansowane
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="iterators.html">
-   Elementy programowania funkcyjnego
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="decorators.html">
-   Dekoratory funkcji i klas
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="context-managers.html">
-   Menadżery kontekstu
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Structural Pattern Matching
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="metaclasses.html">
-   Metaklasy
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="packages.html">
-   Moduły i pakiety
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="unit-tests.html">
-   Testy jednostkowe
-  </a>
- </li>
-</ul>
+</div>
 
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/pattern-matching.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+  
 </div>
-
 </div>
+              
+              
 
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Structural Pattern Matching</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/pattern-matching.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/infotraining/docs-python-adv"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/infotraining/docs-python-adv/issues/new?title=Issue%20on%20page%20%2Fpattern-matching.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/infotraining/docs-python-adv/master?urlpath=tree/pattern-matching.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#wzorzec-pattern">
-   Wzorzec - Pattern
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#proces-dopasowania-wzorca">
-     Proces dopasowania wzorca
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rodzaje-wzorcow">
-     Rodzaje wzorców
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#literaly">
-       Literały
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#wzorce-przechwycen">
-       Wzorce przechwyceń
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#symbol-zastepczy">
-       Symbol zastępczy
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#stale-i-wyliczenia">
-       Stałe i wyliczenia
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#wzorce-sekwencji">
-       Wzorce sekwencji
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#wzorce-slownikowe">
-       Wzorce słownikowe
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#wzorce-klas">
-       Wzorce klas
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#laczenie-wielu-wzorcow-wzorce-z-or">
-       Łączenie wielu wzorców (wzorce z OR)
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#wzorce-z-warunkiem">
-       Wzorce z warunkiem
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wzorzec-pattern">Wzorzec - Pattern</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proces-dopasowania-wzorca">Proces dopasowania wzorca</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rodzaje-wzorcow">Rodzaje wzorców</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#literaly">Literały</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wzorce-przechwycen">Wzorce przechwyceń</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#symbol-zastepczy">Symbol zastępczy</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stale-i-wyliczenia">Stałe i wyliczenia</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wzorce-sekwencji">Wzorce sekwencji</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wzorce-slownikowe">Wzorce słownikowe</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wzorce-klas">Wzorce klas</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#laczenie-wielu-wzorcow-wzorce-z-or">Łączenie wielu wzorców (wzorce z OR)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wzorce-z-warunkiem">Wzorce z warunkiem</a></li>
 </ul>
-
+</li>
+</ul>
+</li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
+
+              
                 
-  <div class="section" id="structural-pattern-matching">
-<h1>Structural Pattern Matching<a class="headerlink" href="#structural-pattern-matching" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="structural-pattern-matching">
+<h1>Structural Pattern Matching<a class="headerlink" href="#structural-pattern-matching" title="Permalink to this heading">#</a></h1>
 <p>Python 3.10 wprowadza nową instrukcję <code class="docutils literal notranslate"><span class="pre">match</span></code> inspirowaną jezykami funkcyjnymi (Scala, Erlang).</p>
 <p>Instrukcja <code class="docutils literal notranslate"><span class="pre">match</span></code> porównuje wartość (<strong>subject</strong>) do kilku różnych wzorców (<strong>patterns</strong>) wymienionych po etykietach <code class="docutils literal notranslate"><span class="pre">case</span></code>, aż znalezione zostanie dopasowanie. Każdy wzorzec (<strong>pattern</strong>) opisuje typ i strukturę akceptowanych wartości. Wzorzec może zawierać też zmienne, do których są wiązane pasujące wartości (<strong>binding</strong>).</p>
 <p>Składnia:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">match</span> <span class="o">&lt;</span><span class="n">subject_expression</span><span class="o">&gt;</span><span class="p">:</span>
-    <span class="n">case</span> <span class="o">&lt;</span><span class="n">pattern_1</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="k">if</span> <span class="n">guard</span><span class="o">&gt;</span><span class="p">]:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">match</span> <span class="o">&lt;</span><span class="n">subject_expression</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="k">case</span> <span class="o">&lt;</span><span class="n">pattern_1</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="k">if</span> <span class="n">guard</span><span class="o">&gt;</span><span class="p">]:</span>
         <span class="o">&lt;</span><span class="n">block</span> <span class="n">to</span> <span class="n">execute</span> <span class="k">if</span> <span class="n">pattern_1</span> <span class="n">matches</span><span class="o">&gt;</span>
-    <span class="n">case</span> <span class="o">&lt;</span><span class="n">pattern_n</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="k">if</span> <span class="n">guard</span><span class="o">&gt;</span><span class="p">]:</span>
+    <span class="k">case</span> <span class="o">&lt;</span><span class="n">pattern_n</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="k">if</span> <span class="n">guard</span><span class="o">&gt;</span><span class="p">]:</span>
         <span class="o">&lt;</span><span class="n">block</span> <span class="n">to</span> <span class="n">execute</span> <span class="k">if</span> <span class="n">pattern_n</span> <span class="n">matches</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<div class="section" id="wzorzec-pattern">
-<h2>Wzorzec - Pattern<a class="headerlink" href="#wzorzec-pattern" title="Permalink to this headline">¶</a></h2>
+<section id="wzorzec-pattern">
+<h2>Wzorzec - Pattern<a class="headerlink" href="#wzorzec-pattern" title="Permalink to this heading">#</a></h2>
 <p>Wzorzec (<strong>pattern</strong>) jest nowym elementem składni języka, który wygląda jak część wyrażenia służącego do konstrukcji obiektu, np:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">[first,</span> <span class="pre">second,</span> <span class="pre">*rest]</span></code></p></li>
@@ -363,8 +418,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">665</span></code></p></li>
 </ul>
 <p>Podobieństwo ze składnią służącą do konstrukcji jest zamierzone, ale dla wzorca oznacza proces odwrotny, nazywany <em>dekonstrukcją</em>. Dekonstrukcja umożliwia ekstrakcję elementów obiektu na podstawie wzorca.</p>
-<div class="section" id="proces-dopasowania-wzorca">
-<h3>Proces dopasowania wzorca<a class="headerlink" href="#proces-dopasowania-wzorca" title="Permalink to this headline">¶</a></h3>
+<section id="proces-dopasowania-wzorca">
+<h3>Proces dopasowania wzorca<a class="headerlink" href="#proces-dopasowania-wzorca" title="Permalink to this heading">#</a></h3>
 <p>Instrukcja <code class="docutils literal notranslate"><span class="pre">match</span></code> stara się dopasować obiekt (<em>subject</em>) do każdego wzorca podanego po etykiecie <code class="docutils literal notranslate"><span class="pre">case</span></code>. Dla pierwszego pasującego wzorca:</p>
 <ul class="simple">
 <li><p>wiązane są wartości do zmiennych występujące w wzorcu</p></li>
@@ -378,25 +433,17 @@
 <span class="n">Point3D</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Point3D&#39;</span><span class="p">,</span> <span class="s1">&#39;x y z&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">make_point_3d</span><span class="p">(</span><span class="n">pt</span><span class="p">):</span>
-    <span class="n">match</span> <span class="n">pt</span><span class="p">:</span>
-        <span class="n">case</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">match</span> <span class="n">pt</span><span class="p">:</span>
+        <span class="k">case</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">Point3D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="n">case</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+        <span class="k">case</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">Point3D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
-        <span class="n">case</span> <span class="n">Point2D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="k">case</span> <span class="n">Point2D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">Point3D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="n">case</span> <span class="n">Point3D</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">):</span>
+        <span class="k">case</span><span class="w"> </span><span class="n">Point3D</span><span class="p">(</span><span class="k">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">pt</span>
-        <span class="n">case</span> <span class="n">_</span><span class="p">:</span>
+        <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;a type cannot be converted to Point3D&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-1-8700d67f3e0f&gt;&quot;</span><span class="gt">, line </span><span class="mi">7</span>
-    <span class="n">match</span> <span class="n">pt</span><span class="p">:</span>
-          <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
 </pre></div>
 </div>
 </div>
@@ -425,42 +472,42 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="rodzaje-wzorcow">
-<h3>Rodzaje wzorców<a class="headerlink" href="#rodzaje-wzorcow" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="literaly">
-<h4>Literały<a class="headerlink" href="#literaly" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="rodzaje-wzorcow">
+<h3>Rodzaje wzorców<a class="headerlink" href="#rodzaje-wzorcow" title="Permalink to this heading">#</a></h3>
+<section id="literaly">
+<h4>Literały<a class="headerlink" href="#literaly" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">number</span> <span class="o">=</span> <span class="mi">42</span>
 
-<span class="n">match</span> <span class="n">number</span><span class="p">:</span>
-    <span class="n">case</span> <span class="mi">0</span><span class="p">:</span>
+<span class="k">match</span> <span class="n">number</span><span class="p">:</span>
+    <span class="k">case</span> <span class="mi">0</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nothing&quot;</span><span class="p">)</span>
-    <span class="n">case</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Just one&quot;</span><span class="p">)</span>
-    <span class="n">case</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A couple&quot;</span><span class="p">)</span>
-    <span class="n">case</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+    <span class="k">case</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;One less than nothing&quot;</span><span class="p">)</span>
-    <span class="n">case</span> <span class="mi">1</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="p">:</span>
+    <span class="k">case</span> <span class="mi">1</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Good luck with that...&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="wzorce-przechwycen">
-<h4>Wzorce przechwyceń<a class="headerlink" href="#wzorce-przechwycen" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="wzorce-przechwycen">
+<h4>Wzorce przechwyceń<a class="headerlink" href="#wzorce-przechwycen" title="Permalink to this heading">#</a></h4>
 <p>Wprowadzenie nazwy zmiennej we wzorcu pozwala przypisać tej zmiennej odpowiednią wartość (w przypadku dopasowania):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">greeting</span> <span class="o">=</span> <span class="s2">&quot;John&quot;</span>
 
-<span class="n">match</span> <span class="n">greeting</span><span class="p">:</span>
-    <span class="n">case</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+<span class="k">match</span> <span class="n">greeting</span><span class="p">:</span>
+    <span class="k">case</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello stranger!&quot;</span><span class="p">)</span>
-    <span class="n">case</span> <span class="n">name</span><span class="p">:</span>
+    <span class="k">case</span> <span class="n">name</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -476,33 +523,33 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 
-<span class="n">match</span> <span class="n">data</span><span class="p">:</span>
-    <span class="n">case</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">]:</span>
+<span class="k">match</span> <span class="n">data</span><span class="p">:</span>
+    <span class="k">case</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">]:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">42</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-    <span class="n">case</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">]:</span>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+    <span class="k">case</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">]:</span>
              <span class="o">^</span>
 <span class="ne">SyntaxError</span>: multiple assignments to name &#39;x&#39; in pattern
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="symbol-zastepczy">
-<h4>Symbol zastępczy<a class="headerlink" href="#symbol-zastepczy" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="symbol-zastepczy">
+<h4>Symbol zastępczy<a class="headerlink" href="#symbol-zastepczy" title="Permalink to this heading">#</a></h4>
 <p>Symbol <code class="docutils literal notranslate"><span class="pre">_</span></code> jest specjalnym znakiem oznaczającym wzorzec, który zawsze pasuje ale nie powoduje wiązania z wartością:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">42</span><span class="p">,</span> <span class="mi">665</span><span class="p">]</span>
 
-<span class="n">match</span> <span class="n">data</span><span class="p">:</span>
-    <span class="n">case</span> <span class="p">[</span><span class="n">_</span><span class="p">]:</span>
+<span class="k">match</span> <span class="n">data</span><span class="p">:</span>
+    <span class="k">case</span><span class="w"> </span><span class="p">[</span><span class="k">_</span><span class="p">]:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A list with just one element&quot;</span><span class="p">)</span>
-    <span class="n">case</span> <span class="p">[</span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">]:</span>
+    <span class="k">case</span><span class="w"> </span><span class="p">[</span><span class="k">_</span><span class="p">,</span> <span class="n">_</span><span class="p">]:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A list with two elements&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -513,9 +560,9 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="stale-i-wyliczenia">
-<h4>Stałe i wyliczenia<a class="headerlink" href="#stale-i-wyliczenia" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="stale-i-wyliczenia">
+<h4>Stałe i wyliczenia<a class="headerlink" href="#stale-i-wyliczenia" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
@@ -527,10 +574,10 @@
 
 <span class="n">my_guitar</span> <span class="o">=</span> <span class="n">Guitar</span><span class="o">.</span><span class="n">STRATOCASTER</span>
 
-<span class="n">match</span> <span class="n">my_guitar</span><span class="p">:</span>
-    <span class="n">case</span> <span class="n">Guitar</span><span class="o">.</span><span class="n">LES_PAUL</span><span class="p">:</span> <span class="c1"># compares my_guitar == Guitar.LES_PAUL</span>
+<span class="k">match</span> <span class="n">my_guitar</span><span class="p">:</span>
+    <span class="k">case</span> <span class="n">Guitar</span><span class="o">.</span><span class="n">LES_PAUL</span><span class="p">:</span> <span class="c1"># compares my_guitar == Guitar.LES_PAUL</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I have guitar with humbuckers&quot;</span><span class="p">)</span>
-    <span class="n">case</span> <span class="n">fender</span><span class="p">:</span>
+    <span class="k">case</span> <span class="n">fender</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;I have a </span><span class="si">{</span><span class="n">fender</span><span class="si">}</span><span class="s2"> guitar&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -541,16 +588,16 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="wzorce-sekwencji">
-<h4>Wzorce sekwencji<a class="headerlink" href="#wzorce-sekwencji" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="wzorce-sekwencji">
+<h4>Wzorce sekwencji<a class="headerlink" href="#wzorce-sekwencji" title="Permalink to this heading">#</a></h4>
 <p>Wzorce sekwencji mają tą samą semantykę co rozpakowanie przypisania (działają zarówno dla krotek jak i list).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]</span>
 
-<span class="n">match</span> <span class="n">collection</span><span class="p">:</span>
-    <span class="n">case</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="o">*</span><span class="n">others</span><span class="p">]:</span>
+<span class="k">match</span> <span class="n">collection</span><span class="p">:</span>
+    <span class="k">case</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="o">*</span><span class="n">others</span><span class="p">]:</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Got 1 , </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> , [</span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2"> , </span><span class="si">{</span><span class="n">others</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -567,18 +614,18 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">(_,</span> <span class="pre">_,</span> <span class="pre">*_)</span></code> - pasuje do sekwencji o długości równej dwa lub większej</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">['a',</span> <span class="pre">*_,</span> <span class="pre">'z']</span></code> - pasuje do sekwencji dowolnej długości zaczynającej się od <code class="docutils literal notranslate"><span class="pre">'a'</span></code> i kończącej się na <code class="docutils literal notranslate"><span class="pre">'z'</span></code></p></li>
 </ul>
-</div>
-<div class="section" id="wzorce-slownikowe">
-<h4>Wzorce słownikowe<a class="headerlink" href="#wzorce-slownikowe" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="wzorce-slownikowe">
+<h4>Wzorce słownikowe<a class="headerlink" href="#wzorce-slownikowe" title="Permalink to this heading">#</a></h4>
 <p>Dopasowywana wartość (<strong>subject</strong>) musi być instancją typu <code class="docutils literal notranslate"><span class="pre">collections.abc.Mapping</span></code>. Dodatkowe klucze są pomijane nawet gdy we wzorcu nie został użyty symbol <code class="docutils literal notranslate"><span class="pre">**rest</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="s2">&quot;http://localhost&quot;</span><span class="p">,</span> <span class="s1">&#39;port&#39;</span><span class="p">:</span> <span class="mi">8080</span><span class="p">,</span> <span class="s1">&#39;timeout&#39;</span><span class="p">:</span> <span class="mi">60</span> <span class="p">}</span>
 
-<span class="n">match</span> <span class="n">config</span><span class="p">:</span>
-    <span class="n">case</span> <span class="p">{</span><span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span> <span class="s1">&#39;port&#39;</span><span class="p">:</span> <span class="n">port</span><span class="p">}:</span>
+<span class="k">match</span> <span class="n">config</span><span class="p">:</span>
+    <span class="k">case</span> <span class="p">{</span><span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span> <span class="s1">&#39;port&#39;</span><span class="p">:</span> <span class="n">port</span><span class="p">}:</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Connecting to </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">case</span> <span class="p">{}:</span>
+    <span class="k">case</span> <span class="p">{}:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Connection not configured...&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -589,9 +636,9 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="wzorce-klas">
-<h4>Wzorce klas<a class="headerlink" href="#wzorce-klas" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="wzorce-klas">
+<h4>Wzorce klas<a class="headerlink" href="#wzorce-klas" title="Permalink to this heading">#</a></h4>
 <p>Umożliwiają dopasowanie na podstawie typu (odpowiednik <code class="docutils literal notranslate"><span class="pre">isinstance()</span></code>) i destrukturyzację obiektów. Dostępne są dwie opcje dopasowań:</p>
 <ul class="simple">
 <li><p>z wykorzystaniem pozycji np. <code class="docutils literal notranslate"><span class="pre">Point(1,</span> <span class="pre">2)</span></code> - dla danej klasy wymagany jest atrybut <code class="docutils literal notranslate"><span class="pre">__match_args__</span></code></p></li>
@@ -620,12 +667,12 @@
 
 <span class="n">shp</span> <span class="o">=</span> <span class="n">Rectangle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">665</span><span class="p">)</span>
 
-<span class="n">match</span> <span class="n">shp</span><span class="p">:</span>
-    <span class="n">case</span> <span class="n">Circle</span><span class="p">(</span><span class="n">coord</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+<span class="k">match</span> <span class="n">shp</span><span class="p">:</span>
+    <span class="k">case</span> <span class="n">Circle</span><span class="p">(</span><span class="n">coord</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Drawing circle with radius=</span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s2"> at </span><span class="si">{</span><span class="n">coord</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">case</span> <span class="n">Rectangle</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="k">case</span><span class="w"> </span><span class="n">Rectangle</span><span class="p">(</span><span class="k">_</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Drawing rectangle with width=</span><span class="si">{</span><span class="n">w</span><span class="si">}</span><span class="s2"> and height=</span><span class="si">{</span><span class="n">h</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">case</span> <span class="n">Shape</span><span class="p">(</span><span class="n">_</span><span class="p">):</span>
+    <span class="k">case</span><span class="w"> </span><span class="n">Shape</span><span class="p">(</span><span class="k">_</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Drawing a shape!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -636,23 +683,23 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="laczenie-wielu-wzorcow-wzorce-z-or">
-<h4>Łączenie wielu wzorców (wzorce z OR)<a class="headerlink" href="#laczenie-wielu-wzorcow-wzorce-z-or" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="laczenie-wielu-wzorcow-wzorce-z-or">
+<h4>Łączenie wielu wzorców (wzorce z OR)<a class="headerlink" href="#laczenie-wielu-wzorcow-wzorce-z-or" title="Permalink to this heading">#</a></h4>
 <p>Alternatywne wzorce mogą być połączone w jeden za pomocą <code class="docutils literal notranslate"><span class="pre">|</span></code>. Takie połączenie oznacza, że cały wzorzec zostaje dopasowany, jeśli przynajmniej jedna z alternatyw pasuje.</p>
 <p>Alternatywne wzorce są dopasowywane od lewej do prawej i mają właściwość <em>short-circuit</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">something</span> <span class="o">=</span> <span class="s2">&quot;something&quot;</span>
 
-<span class="n">match</span> <span class="n">something</span><span class="p">:</span>
-    <span class="n">case</span> <span class="mi">0</span> <span class="o">|</span> <span class="mi">1</span> <span class="o">|</span> <span class="mi">2</span><span class="p">:</span>
+<span class="k">match</span> <span class="n">something</span><span class="p">:</span>
+    <span class="k">case</span> <span class="mi">0</span> <span class="o">|</span> <span class="mi">1</span> <span class="o">|</span> <span class="mi">2</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;small number&quot;</span><span class="p">)</span>
-    <span class="n">case</span> <span class="p">[]</span> <span class="o">|</span> <span class="p">[</span><span class="n">_</span><span class="p">]:</span>
+    <span class="k">case</span><span class="w"> </span><span class="p">[]</span> <span class="o">|</span> <span class="p">[</span><span class="k">_</span><span class="p">]:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a short sequence&quot;</span><span class="p">)</span>
-    <span class="n">case</span> <span class="nb">str</span><span class="p">()</span> <span class="o">|</span> <span class="nb">bytes</span><span class="p">():</span>
+    <span class="k">case</span> <span class="nb">str</span><span class="p">()</span> <span class="o">|</span> <span class="nb">bytes</span><span class="p">():</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;something string-like&quot;</span><span class="p">)</span>
-    <span class="n">case</span> <span class="n">_</span><span class="p">:</span>
+    <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;something else&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -663,9 +710,9 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="wzorce-z-warunkiem">
-<h4>Wzorce z warunkiem<a class="headerlink" href="#wzorce-z-warunkiem" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="wzorce-z-warunkiem">
+<h4>Wzorce z warunkiem<a class="headerlink" href="#wzorce-z-warunkiem" title="Permalink to this heading">#</a></h4>
 <p>Każdy z wzorców umieszczonych na początku instrukcji <code class="docutils literal notranslate"><span class="pre">match</span></code> może zawierać warunek (<strong>guard</strong>)  w postaci wyrażenia <code class="docutils literal notranslate"><span class="pre">if</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -673,14 +720,14 @@
 
 <span class="n">coord</span> <span class="o">=</span> <span class="p">(</span><span class="mi">88</span><span class="p">,</span> <span class="mi">88</span><span class="p">)</span>
 
-<span class="n">match</span> <span class="n">coord</span><span class="p">:</span>
-    <span class="n">case</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">MAX_SIZE</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="n">MAX_SIZE</span><span class="p">:</span>
+<span class="k">match</span> <span class="n">coord</span><span class="p">:</span>
+    <span class="k">case</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">MAX_SIZE</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="n">MAX_SIZE</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Both coordinates out of bounds&quot;</span><span class="p">)</span>
-    <span class="n">case</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">MAX_SIZE</span> <span class="ow">or</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="n">MAX_SIZE</span><span class="p">:</span>
+    <span class="k">case</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">MAX_SIZE</span> <span class="ow">or</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="n">MAX_SIZE</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;one coordinate out of bounds&quot;</span><span class="p">)</span>
-    <span class="n">case</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="p">:</span>
+    <span class="k">case</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pixel with x coordinate the same as y&quot;</span><span class="p">)</span>
-    <span class="n">case</span> <span class="n">_</span><span class="p">:</span>
+    <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pixel at </span><span class="si">{</span><span class="n">coord</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -691,10 +738,10 @@
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -708,7 +755,7 @@
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -716,56 +763,120 @@
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-        
-            
 
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="context-managers.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Menadżery kontekstu</p>
-            </div>
-        </a>
-    </div>
-     <div id="next">
-        <a class="right-next" href="metaclasses.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Metaklasy</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
-</div>
-        
-        </div>
-    </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Krystian Piękoś<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
-</main>
-
-
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="context-managers.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Menadżery kontekstu</p>
       </div>
-    </div>
+    </a>
+    <a class="right-next"
+       href="metaclasses.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Metaklasy</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+</div>
 
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wzorzec-pattern">Wzorzec - Pattern</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proces-dopasowania-wzorca">Proces dopasowania wzorca</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rodzaje-wzorcow">Rodzaje wzorców</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#literaly">Literały</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wzorce-przechwycen">Wzorce przechwyceń</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#symbol-zastepczy">Symbol zastępczy</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stale-i-wyliczenia">Stałe i wyliczenia</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wzorce-sekwencji">Wzorce sekwencji</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wzorce-slownikowe">Wzorce słownikowe</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wzorce-klas">Wzorce klas</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#laczenie-wielu-wzorcow-wzorce-z-or">Łączenie wielu wzorców (wzorce z OR)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wzorce-z-warunkiem">Wzorce z warunkiem</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
+  <div class="footer-item">
+    
+<p class="component-author">
+By Krystian Piękoś
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
